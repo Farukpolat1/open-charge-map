@@ -1,0 +1,30 @@
+<h1>Şarj İstasyonları</h1>
+<div id="map" style="height: 400px;"></div>
+<ul class="station-list">
+  
+  <% if false %>
+    <li>
+      <h2><%= link_to station["AddressInfo"]["Title"], "/stations/#{station["ID"]}" %></h2>
+      <p><%= station["AddressInfo"]["AddressLine1"] %>, <%= station["AddressInfo"]["Town"] %>, <%= station["AddressInfo"]["StateOrProvince"] %>, <%= station["AddressInfo"]["Postcode"] %></p>
+      <p>Distance: <%= station["AddressInfo"]["Distance"] %> km</p>
+    </li>
+  <% end %>
+</ul>
+
+<script>
+  var stations = <%= @stations.to_json.html_safe %>;
+
+    var lat = 39.0
+    var long = 41.0
+    var map = L.map("map").setView([lat, long], 5);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
+    .addTo(map)
+    .bindPopup("<b>Open Charge Map</b><br>Şarj İstasyonları Haritası");
+  
+  stations.forEach(function(station) {
+   
+    L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude]).addTo(map)
+    .bindPopup("<b>" + station.AddressInfo.Title + "</b><br>" + station.AddressInfo.AddressLine1);;
+    console.log("Station: " + station.AddressInfo.Title + ", Latitude: " + station.AddressInfo.Latitude + ", Longitude: " + station.AddressInfo.Longitude);
+  });
+</script>

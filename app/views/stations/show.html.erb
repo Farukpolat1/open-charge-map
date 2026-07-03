@@ -1,0 +1,12 @@
+<h1>Şarj İstasyonu</h1>
+<ul>
+  <li><%= @station["AddressInfo"]["Title"]%></li>
+  <li><%= @station["AddressInfo"]["AddressLine1"]%></li>
+  <li><%= @station["AddressInfo"]["Town"]%></li>
+  <li><%= @station["AddressInfo"]["StateOrProvince"]%></li>
+  <li><%= @station["AddressInfo"]["Postcode"]%></li>
+  <li><%= @station["AddressInfo"]["Country"]["Title"]%></li>
+  <li><%= @station["Connections"][0]["ConnectionType"]["Title"]%></li>
+  <li><%= @station["Connections"][0]["Level"]["Title"]%></li>
+  <li><%= @station["Connections"][0]["Quantity"]%></li> 
+</ul>

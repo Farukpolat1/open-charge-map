@@ -1,0 +1,11 @@
+<h1>Contact Us</h1>
+<p>If you have any questions or feedback, please reach out to us using the form below.</p>
+ <%= form_with url: "/contact", method: :post do %>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>    
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+  <%= submit_tag "Submit" %>
+<% end %>
