@@ -1,0 +1,54 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+ .navbar {
+  background-color: #286aa0;
+  padding: 10px 20px;
+}
+.navbar ul {
+  display: flex;
+  gap: 40px;
+}
+.navbar ul li { 
+  list-style: none;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.full-map {
+  height: 100vh;
+  width: 100%;
+}
+.footer {
+  background-color:  #286aa0;;
+  color: #000000;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.station-list li {
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(212, 12, 223, 0.1);
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 40px;
+  padding: 40px;
+}

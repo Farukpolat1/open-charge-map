@@ -1,0 +1,34 @@
+<h1>Search Charging Stations</h1>
+<p>Find charging stations near you.</p>
+<form action="/search" method="get">
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" placeholder="Enter a location">
+
+  <button type="submit">search</button>
+</form>
+
+<ul class="station-list">
+  <% if @stations %>
+    <% @stations.each do |station| %>
+      <li>
+        <h2><%= link_to station["AddressInfo"]["Title"], "/stations/#{station["ID"]}" %></h2>
+        <p><%= station["AddressInfo"]["AddressLine1"] %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<div id="map" class="full-map"></div>
+<%if @stations %>
+  <script>
+    var stations = <%= @stations.to_json.html_safe %>;
+    var map = L.map("map").setView([41.0, 29.0], 13);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+    stations.forEach(function(station) {
+      L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude])
+        .addTo(map)
+        .bindPopup(station.AddressInfo.Title);
+    });
+  </script>
+<% end %>

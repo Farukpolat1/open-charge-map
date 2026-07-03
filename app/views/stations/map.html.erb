@@ -1,0 +1,14 @@
+<div id="map" class="full-map"></div>
+
+<script>
+  var stations = <%= @stations.to_json.html_safe %>;
+  var map = L.map("map").setView([41.0, 29.0], 13);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+  stations.forEach(function(station) {
+    L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude])
+      .addTo(map)
+      .bindPopup(station.AddressInfo.Title);
+  });
+  
+</script>
