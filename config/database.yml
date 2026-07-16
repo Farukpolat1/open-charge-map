@@ -1,4 +1,3 @@
-
 default: &default
   adapter: postgresql
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -14,6 +13,9 @@ development:
 test:
   <<: *default
   database: open_charge_map_test
+  host: <%= ENV.fetch("DB_HOST") { nil } %>
+  username: <%= ENV.fetch("DB_USERNAME") { nil } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { nil } %>
 
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
