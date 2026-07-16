@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 # ⚡ Şarj Haritası
 
 Türkiye genelindeki elektrikli araç (EV) şarj istasyonlarını tek bir platformda gösteren, [Open Charge Map API](https://openchargemap.org/) verilerini kullanan bir Ruby on Rails web uygulaması.
