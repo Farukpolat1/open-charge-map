@@ -1,30 +1,53 @@
-<h1>Şarj İstasyonları</h1>
-<div id="map" style="height: 400px;"></div>
-<ul class="station-list">
-  
-  <% if false %>
-    <li>
-      <h2><%= link_to station["AddressInfo"]["Title"], "/stations/#{station["ID"]}" %></h2>
-      <p><%= station["AddressInfo"]["AddressLine1"] %>, <%= station["AddressInfo"]["Town"] %>, <%= station["AddressInfo"]["StateOrProvince"] %>, <%= station["AddressInfo"]["Postcode"] %></p>
-      <p>Distance: <%= station["AddressInfo"]["Distance"] %> km</p>
-    </li>
-  <% end %>
-</ul>
+<div class="container-fluid mt-4" data-controller="map_toggle">
+  <h1 class="mb-4">Şarj İstasyonları</h1>
 
-<script>
-  var stations = <%= @stations.to_json.html_safe %>;
+  <div class="d-lg-none mb-3">
+    <button class="btn btn-outline-primary me-2" data-action="click->map_toggle#showList">Liste</button>
+    <button class="btn btn-outline-primary" data-action="click->map_toggle#showMap">Harita</button>
+  </div>
 
-    var lat = 39.0
-    var long = 41.0
-    var map = L.map("map").setView([lat, long], 5);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
-    .addTo(map)
-    .bindPopup("<b>Open Charge Map</b><br>Şarj İstasyonları Haritası");
-  
-  stations.forEach(function(station) {
-   
-    L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude]).addTo(map)
-    .bindPopup("<b>" + station.AddressInfo.Title + "</b><br>" + station.AddressInfo.AddressLine1);;
-    console.log("Station: " + station.AddressInfo.Title + ", Latitude: " + station.AddressInfo.Latitude + ", Longitude: " + station.AddressInfo.Longitude);
-  });
+  <div class="row">
+    <div class="col-lg-5 mb-4" data-map_toggle-target="list">
+      <ul class="list-group">
+        <% if @stations %>
+          <% @stations.each do |station| %>
+            <li class="list-group-item">
+              <h5 class="mb-1"><%= link_to station["AddressInfo"]["Title"], "/stations/#{station["ID"]}" %><%= station_status_badge(station) %></h5>
+              <p class="mb-1 text-muted">
+                <%= station["AddressInfo"]["AddressLine1"] %>, <%= station["AddressInfo"]["Town"] %>, <%= station["AddressInfo"]["StateOrProvince"] %>
+              </p>
+              <% if station["AddressInfo"]["Distance"].present? %>
+                <small>Mesafe: <%= "%.1f" % station["AddressInfo"]["Distance"] %> km</small>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-lg-7 d-none d-lg-block" data-map_toggle-target="map">
+      <div class="d-flex justify-content-end mb-2">
+        <span class="text-muted small">Haritada gösterilen: <strong id="visible-station-count">0</strong> istasyon</span>
+      </div>
+      <div id="map" class="rounded shadow-sm" style="height: 600px;"></div>
+    </div>
+  </div>
+
+  <%= render "shared/station_detail_panel" %>
+</div>
+
+<script type="module">
+  import { initStationDetailPanel } from "station_detail_panel";
+  import { createStationLayer } from "station_markers";
+  var showStationDetail = initStationDetailPanel();
+
+  var stations = <%= (@stations || []).to_json.html_safe %>;
+
+  var map = L.map("map");
+  map.fitBounds([[35.8, 25.6], [42.1, 44.8]]);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+  var stationLayer = createStationLayer(map);
+  stationLayer.render(stations, showStationDetail, "visible-station-count");
 </script>
+

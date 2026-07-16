@@ -1,12 +1,94 @@
-<h1>Şarj İstasyonu</h1>
-<ul>
-  <li><%= @station["AddressInfo"]["Title"]%></li>
-  <li><%= @station["AddressInfo"]["AddressLine1"]%></li>
-  <li><%= @station["AddressInfo"]["Town"]%></li>
-  <li><%= @station["AddressInfo"]["StateOrProvince"]%></li>
-  <li><%= @station["AddressInfo"]["Postcode"]%></li>
-  <li><%= @station["AddressInfo"]["Country"]["Title"]%></li>
-  <li><%= @station["Connections"][0]["ConnectionType"]["Title"]%></li>
-  <li><%= @station["Connections"][0]["Level"]["Title"]%></li>
-  <li><%= @station["Connections"][0]["Quantity"]%></li> 
-</ul>
+<% if @station.blank? %>
+  <div class="container mt-4 mb-5">
+    <%= link_to "← Geri", :back, class: "btn btn-outline-secondary btn-sm mb-3" %>
+    <div class="alert alert-warning">Bu istasyon bulunamadı.</div>
+  </div>
+<% else %>
+<% address = @station["AddressInfo"] || {} %>
+<% connection = @station["Connections"]&.first || {} %>
+
+<div class="container mt-4 mb-5">
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <%= link_to "← Geri", :back, class: "btn btn-outline-secondary btn-sm" %>
+    <% if authenticated? %>
+      <% if @favorite %>
+        <%= button_to "★ Favorilerden Çıkar", favorite_path(@favorite), method: :delete, class: "btn btn-outline-danger btn-sm", form_class: "m-0" %>
+      <% else %>
+        <%= button_to "☆ Favorilere Ekle", favorites_path, method: :post, params: { favorite: { station_identifier: @station["ID"], station_title: address["Title"], station_lat: address["Latitude"], station_lng: address["Longitude"] } }, class: "btn btn-outline-warning btn-sm", form_class: "m-0" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h1 class="h3 mb-3"><%= address["Title"] %></h1>
+
+      <h6 class="text-muted text-uppercase small mb-2">Adres</h6>
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item"><%= address["AddressLine1"] %></li>
+        <li class="list-group-item"><%= address["Town"] %></li>
+        <li class="list-group-item"><%= address["StateOrProvince"] %></li>
+        <li class="list-group-item"><%= address["Postcode"] %></li>
+        <li class="list-group-item"><%= address.dig("Country", "Title") %></li>
+      </ul>
+
+      <h6 class="text-muted text-uppercase small mb-2">Bağlantı Bilgisi</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Konnektör Tipi</span>
+          <span class="fw-semibold"><%= connection.dig("ConnectionType", "Title") %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Seviye</span>
+          <span class="fw-semibold"><%= connection.dig("Level", "Title") %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Adet</span>
+          <span class="fw-semibold"><%= connection["Quantity"] %></span>
+        </li>
+      </ul>
+
+      <h6 class="text-muted text-uppercase small mb-2 mt-4">Durum</h6>
+      <% if @latest_status_report %>
+        <% if @latest_status_report.status == "working" %>
+          <div class="alert alert-success py-2 mb-3">
+            ✅ Çalışıyor — <%= @latest_status_report.created_at.strftime("%d.%m.%Y %H:%M") %> tarihinde bildirildi
+          </div>
+        <% else %>
+          <div class="alert alert-danger py-2 mb-3">
+            ⚠️ Bozuk — <%= @latest_status_report.created_at.strftime("%d.%m.%Y %H:%M") %> tarihinde bildirildi
+          </div>
+        <% end %>
+      <% else %>
+        <div class="alert alert-secondary py-2 mb-3">Henüz durum bildirimi yok.</div>
+      <% end %>
+
+      <% if authenticated? %>
+        <div class="d-flex gap-2">
+          <%= button_to "✅ Çalışıyor Bildir", status_reports_path, method: :post, params: { status_report: { station_identifier: @station["ID"], status: "working" } }, class: "btn btn-outline-success btn-sm", form_class: "m-0" %>
+          <%= button_to "⚠️ Bozuk Bildir", status_reports_path, method: :post, params: { status_report: { station_identifier: @station["ID"], status: "broken" } }, class: "btn btn-outline-danger btn-sm", form_class: "m-0" %>
+        </div>
+      <% end %>
+
+      <h6 class="text-muted text-uppercase small mb-2 mt-4">Değerlendirme</h6>
+      <div class="d-flex gap-2 align-items-center">
+        <% if authenticated? %>
+          <% if @user_rating&.liked == true %>
+            <%= button_to "👍 Beğendim (#{@like_count})", station_rating_path(@user_rating), method: :delete, class: "btn btn-success btn-sm", form_class: "m-0" %>
+          <% else %>
+            <%= button_to "👍 Beğendim (#{@like_count})", station_ratings_path, method: :post, params: { station_rating: { station_identifier: @station["ID"], liked: true } }, class: "btn btn-outline-success btn-sm", form_class: "m-0" %>
+          <% end %>
+
+          <% if @user_rating&.liked == false %>
+            <%= button_to "👎 Beğenmedim (#{@dislike_count})", station_rating_path(@user_rating), method: :delete, class: "btn btn-danger btn-sm", form_class: "m-0" %>
+          <% else %>
+            <%= button_to "👎 Beğenmedim (#{@dislike_count})", station_ratings_path, method: :post, params: { station_rating: { station_identifier: @station["ID"], liked: false } }, class: "btn btn-outline-danger btn-sm", form_class: "m-0" %>
+          <% end %>
+        <% else %>
+          <span class="text-muted small">👍 <%= @like_count %> · 👎 <%= @dislike_count %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

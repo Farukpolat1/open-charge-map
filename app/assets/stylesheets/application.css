@@ -8,47 +8,291 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ :root {
+  --primary: #2563eb;      /* Elektrik mavisi - ana marka rengi */
+  --primary-dark: #1d4ed8; /* Ana rengin koyu tonu - gradyanlarda derinlik için */
+  --accent: #f59e0b;       /* Enerjik turuncu/amber - şimşek/enerji vurgusu */
+  --success: #10b981;      /* Canlı yeşil - "aktif" hissi için */
+  --dark: #111827;         /* Navbar ve koyu alanlar için */
+  --shadow: rgba(37, 99, 235, 0.15);  /* Mavi tonlu, yumuşak gölge */
+}
  .navbar {
-  background-color: #286aa0;
-  padding: 10px 20px;
-}
-.navbar ul {
+  background-color: var(--dark);
+  padding: 14px 24px;
   display: flex;
-  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
-.navbar ul li { 
-  list-style: none;
+.navbar-nav {
+  gap: 20px;
 }
-.navbar ul li a {
+.navbar-nav > .nav-item > .nav-link {
   text-decoration: none;
-  color: #000000;
+  color: #fffafa;
   font-weight: bold;
 }
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
+/* Bootstrap'ın varsayılan .container genişliği (~1320px) büyük ekranlarda dar kalıyordu;
+   navbar ve footer zaten tam genişlikte (container'a sarılı değiller), sadece bu iç içerik
+   alanını biraz daha ferah yapıyoruz - aşırıya kaçmadan (eski 3200px gibi sınırsız değil). */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1600px;
+  }
 }
 .full-map {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
 }
-.footer {
-  background-color:  #286aa0;;
-  color: #000000;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
+/* Liste ile yan yana duran haritalar için: full-map'in aksine sabit vh değil,
+   yanındaki liste sütunuyla aynı yüksekliğe gelecek şekilde kart yüksekliğini (100%) doldurur */
+.split-map {
+  height: 100%;
+  min-height: 480px;
   width: 100%;
 }
-.station-list li {
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(212, 12, 223, 0.1);
+/* /map sayfasındaki istasyon listesi, harita ile aynı yükseklikte kalsın diye
+   belirli bir yükseklikten sonra kendi içinde kaydırılır */
+.station-list-panel {
+  max-height: 640px;
+  overflow-y: auto;
+}
+.site-footer {
+  background-color: var(--dark);
+  color: #fff;
+  margin-top: 40px;
+}
+.footer-links li {
+  margin-bottom: 10px;
+}
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.footer-link-button {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: inherit;
+  transition: color 0.15s ease;
+}
+.footer-link-button:hover {
+  color: #fff;
 }
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  margin: 40px;
-  padding: 40px;
+  margin: 0px;
+  padding: 0px;
+}
+.hero-section {
+  display: flex;             /* İçindeki elemanları esnek bir kutu modeline alır */
+  justify-content: center;    /* Elemanları yatayda tam ortalar */
+  align-items: center;        /* Elemanları dikeyde tam ortalar */
+  text-align: center;         /* Yazıların hepsini merkezde toplar (ortalar) */
+  padding: 60px 20px;         /* Üstten-alttan 60px, sağdan-soldan 20px iç boşluk bırakır */
+  flex-direction: column;
+
+  /* Mavi tonlarından koyu laciverte geçen, enerjik ve modern bir gradyan: */
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 60%, var(--dark) 100%);
+}
+
+.hero-section h1 {
+  font-size: 2.8rem;          /* Başlığı oldukça büyük ve dikkat çekici yapar */
+  color: #ffffff;             /* Arkaplan artık koyu olduğu için yazıyı beyaz yapar (okunabilirlik) */
+  margin-bottom: 15px;        /* Başlığın altındaki açıklama ile arasına 15px boşluk koyar */
+  font-weight: 700;           /* Başlığı kalın (bold) yapar */
+
+  /* Başlığa hafif bir gölge vererek arkaplandan öne çıkmasını, derinlik hissi vermesini sağlar: */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section p {
+  font-size: 1.2rem;          /* Alt açıklamayı okunabilir ama başlıktan küçük bir boyuta getirir */
+  color: #ffffff;             /* Koyu arkaplanda rahat okunsun diye açık gri-beyaz bir ton verir */
+  margin-bottom: 40px;        /* Açıklama ile aşağıdaki içerik arasına geniş bir boşluk bırakır */
+}
+/* Mesafe/İl/İlçe gibi filtre kartlarına canlı bir görünüm kazandırır */
+.card {
+  border: none;                      /* Bootstrap'ın varsayılan ince gri kenarlığını kaldırır */
+  border-radius: 14px;               /* Köşeleri belirgin şekilde yuvarlatır, modern görünüm verir */
+  box-shadow: 0 4px 16px var(--shadow); /* Mavi tonlu, yumuşak bir gölge - "havada duruyor" hissi verir */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hover değişikliklerinin yumuşak geçişli olmasını sağlar */
+}
+
+/* Fare kartın üzerine geldiğinde (hover durumu) */
+.card:hover {
+  transform: translateY(-4px);       /* Kartı hafifçe 4 piksel yukarı kaldırır (zıplama hissi) */
+  box-shadow: 0 8px 24px var(--shadow); /* Gölgeyi büyüterek "havaya kalkmış" etkisini pekiştirir */
+}
+
+/* Kart başlıklarını (Mesafe Filtresi, İl Filtresi gibi) vurgular */
+.card-title {
+  color: var(--primary);             /* Başlığı marka rengimizle (mavi) boyar */
+  font-weight: 700;                  /* Kalın yaparak öne çıkarır */
+}
+/* Bootstrap'ın "btn-primary" butonlarına (Ara butonu gibi) canlılık katar */
+.btn-primary {
+  background-color: var(--primary);   /* Marka rengimizle eşleştirir */
+  border-color: var(--primary);
+  border-radius: 10px;                /* Köşeleri yuvarlatır, sert görünümü yumuşatır */
+  font-weight: 600;                   /* Yazıyı kalınlaştırır */
+  box-shadow: 0 4px 12px var(--shadow); /* Butona hafif, renkli bir gölge verir */
+  transition: transform 0.15s ease, box-shadow 0.15s ease; /* Hover geçişini yumuşatır */
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);        /* Üzerine gelince hafifçe yukarı kalkar */
+  box-shadow: 0 6px 18px var(--shadow); /* Gölgeyi büyütür, "havada" hissi verir */
+}
+
+/* Liste/Harita gibi outline (çerçeveli) butonları canlandırır */
+.btn-outline-primary {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.15s ease;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* Mesafe slider'ının rengini marka rengimize uydurur */
+.form-range::-webkit-slider-thumb {
+  background-color: var(--primary);   /* Sürgü topuzunun rengi (Chrome/Safari için) */
+}
+
+.form-range::-moz-range-thumb {
+  background-color: var(--primary);   /* Sürgü topuzunun rengi (Firefox için) */
+}
+/* Alt kısımdaki "Türkiye genelinde X istasyon listeleniyor" bandını canlandırır */
+.live-status {
+  background-color: #eff6ff;          /* Marka rengimizin çok açık, pastel tonu */
+  border-left: 4px solid var(--primary); /* Sol tarafa kalın, dikkat çekici bir mavi çizgi */
+  padding: 16px 24px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Filtre kartlarını ve haritayı tek bir bütün gibi gösteren arkaplan paneli */
+.map-filter-panel {
+  background-color: #f8fafc;
+  border-radius: 18px;
+}
+
+/* İçindeki "pulse" (nabız) ikonuna canlı bir animasyon ekler */
+.pulse-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--success);   /* Yeşil, "aktif/canlı" hissi verir */
+  border-radius: 50%;                 /* Tam yuvarlak yapar */
+  margin-right: 8px;
+  animation: pulse 1.5s infinite;     /* Aşağıda tanımlayacağımız nabız animasyonunu sürekli tekrarlar */
+}
+
+/* Nabız animasyonunun adımlarını tanımlar: büyüyüp küçülerek "attığı" hissi verir */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Harita üzerindeki istasyon marker'ları: OCM (mavi) / kullanıcı eklemesi (yeşil) ayrımı */
+.station-marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.station-marker-ocm {
+  background-color: var(--primary);
+}
+.station-marker-local {
+  background-color: var(--success);
+}
+
+/* Liste öğelerinde (harita marker'ının küçük hali) OCM/kullanıcı eklemesi ayrımı */
+.station-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* İstasyon liste öğelerine hafif bir hover vurgusu */
+.station-list-panel .list-group-item {
+  transition: background-color 0.15s ease;
+}
+.station-list-panel .list-group-item:hover {
+  background-color: #f8fafc;
+}
+
+/* Profil panelindeki (Dashboard) istatistik kartları */
+.stat-tile-label {
+  color: var(--dark);
+  opacity: 0.6;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.stat-tile-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+/* Hakkımızda sayfasındaki Vizyon/Misyon/Hakkımızda kartlarına renkli üst çizgi ve ikon rozeti */
+.about-card {
+  border-top: 4px solid transparent;
+}
+.about-card-primary {
+  border-top-color: var(--primary);
+}
+.about-card-accent {
+  border-top-color: var(--accent);
+}
+.about-card-success {
+  border-top-color: var(--success);
+}
+.about-icon-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.about-icon-badge-primary {
+  background-color: #eff6ff;
+}
+.about-icon-badge-accent {
+  background-color: #fef3e2;
+}
+.about-icon-badge-success {
+  background-color: #ecfdf5;
+}
+.about-chip {
+  background-color: #f1f5f9;
+  color: var(--dark);
+  font-weight: 500;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+/* Bize Ulaşın sayfasındaki iletişim bilgisi satırlarındaki ikon */
+.contact-info-icon {
+  font-size: 1.3rem;
+  line-height: 1;
 }

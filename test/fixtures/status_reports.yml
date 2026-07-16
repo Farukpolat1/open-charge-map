@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  station_identifier: local-1
+  status: working
+  comment: MyText
+  user: one
+
+two:
+  station_identifier: local-1
+  status: broken
+  comment: MyText
+  user: two

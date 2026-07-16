@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  station_identifier: local-1
+  liked: true
+  user: one
+
+two:
+  station_identifier: local-1
+  liked: false
+  user: two
