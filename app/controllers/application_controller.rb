@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Authentication
   before_action :log_request
   before_action :set_service
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
@@ -6,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
   private
   def log_request
     puts "have a request"

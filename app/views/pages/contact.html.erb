@@ -1,11 +1,83 @@
-<h1>Contact Us</h1>
-<p>If you have any questions or feedback, please reach out to us using the form below.</p>
- <%= form_with url: "/contact", method: :post do %>
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>    
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" required></textarea>
-  <%= submit_tag "Submit" %>
-<% end %>
+<main class="hero-section">
+  <div class="hero-container">
+    <h1>Bize Ulaşın</h1>
+    <p>Bir sorunuz mu var, bize yazın.</p>
+  </div>
+</main>
+
+<main class="contact-section">
+  <div class="container mt-5 mb-5">
+    <% if flash[:notice] %>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
+    <% end %>
+
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card h-100 about-card about-card-primary">
+          <div class="card-body">
+            <div class="about-icon-badge about-icon-badge-primary">✉️</div>
+            <h4 class="card-title mb-3">İletişim Bilgileri</h4>
+
+            <ul class="list-unstyled contact-info-list">
+              <li class="d-flex align-items-start mb-3">
+                <span class="contact-info-icon me-3">📧</span>
+                <div>
+                  <div class="text-muted small text-uppercase">E-posta</div>
+                  <div class="fw-semibold">destek@sarjharitasi.com</div>
+                </div>
+              </li>
+              <li class="d-flex align-items-start mb-3">
+                <span class="contact-info-icon me-3">📞</span>
+                <div>
+                  <div class="text-muted small text-uppercase">Telefon</div>
+                  <div class="fw-semibold">+90 (850) 123 45 67</div>
+                </div>
+              </li>
+              <li class="d-flex align-items-start">
+                <span class="contact-info-icon me-3">📍</span>
+                <div>
+                  <div class="text-muted small text-uppercase">Adres</div>
+                  <div class="fw-semibold">İstanbul, Türkiye</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card h-100 about-card about-card-accent">
+          <div class="card-body">
+            <div class="about-icon-badge about-icon-badge-accent">📝</div>
+            <h4 class="card-title mb-3">Mesaj Gönderin</h4>
+
+            <%= form_with url: "/contact", method: :post do%>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">İsim</label>
+                  <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Mail</label>
+                  <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+              </div>
+
+              <div class="mb-3 mt-3">
+                <label for="subject" class="form-label">Konu</label>
+                <input type="text" id="subject" name="subject" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="message" class="form-label">Mesaj</label>
+                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+              </div>
+
+              <%= submit_tag "Gönder", class: "btn btn-warning rounded-pill fw-semibold" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

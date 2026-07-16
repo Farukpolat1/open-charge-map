@@ -1,9 +1,57 @@
-<h1>About Us</h1>
-<li>
-<%= link_to "Contact Us", "/contact" %>
-<%= link_to "Search Stations", "/search" %>
-</li>
-<p>Welcome to our charging station map! We are dedicated to providing the best charging solutions for electric vehicle owners.</p>
-<p>Our mission is to make it easy for EV drivers to find charging stations across Turkey. We provide up-to-date information on station locations, availability, and more.</p>
-<p>Feel free to explore our map and search for charging stations near you. If you have any questions or feedback, please don't hesitate to contact us.</p>
-<p>Thank you for using our service!</p>
+<main class="hero-section">
+  <div class="hero-container">
+    <h1>Biz Kimiz ve Ne İş Yapıyoruz </h1>
+    <p>📍 Şarj Haritası | Türkiye'nin Yeni Nesil Şarj İstasyonu Haritası. 🔌 Güncel Konumlar, Kesintisiz Yolculuklar!</p>
+  </div>
+</main>
+
+<main class="about-section">
+  <div class="container mt-4 mb-5">
+    <div class="d-flex justify-content-center gap-3 mb-4">
+      <%= link_to "🔗 Bizimle Bağlantı Kurun", "/contact", class: "btn btn-outline-primary" %>
+      <%= link_to "🔍 İstasyonları Araştırın", "/search", class: "btn btn-warning fw-semibold" %>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 about-card about-card-primary">
+          <div class="card-body">
+            <div class="about-icon-badge about-icon-badge-primary">🎯</div>
+            <h4 class="card-title">📍Vizyonumuz</h4>
+            <p class="card-text">Türkiye genelindeki tüm elektrikli araç şarj istasyonlarını tek bir platformda birleştiren, sürücülerin yolculuklarını kesintisiz ve güvenle planlamasını sağlayan lider şarj istasyonu haritası olmak.🌐✨</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 about-card about-card-accent">
+          <div class="card-body">
+            <div class="about-icon-badge about-icon-badge-accent">🚀</div>
+            <h4 class="card-title">⚡️Misyonumuz</h4>
+            <p class="card-text">EV sürücülerine en güncel, doğru ve anlık istasyon bilgilerini sunarak şarj noktası bulmayı kolaylaştırmak; Türkiye'nin elektrikli araç dönüşümüne ve sürdürübilir geleceğe hızlı, pratik çözümlerle katkıda bulunmak.🚗🌱</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-4">
+        <div class="card about-card about-card-success">
+          <div class="card-body">
+            <div class="about-icon-badge about-icon-badge-success">🔌</div>
+            <h4 class="card-title">📖 Hakkımızda</h4>
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge rounded-pill about-chip">🇹🇷 Türkiye Geneli</span>
+              <span class="badge rounded-pill about-chip">🔄 Anlık Güncelleme</span>
+              <span class="badge rounded-pill about-chip">🤝 Topluluk Katkılı</span>
+            </div>
+
+            <p class="card-text">Şarj Haritası, Türkiye'deki elektrikli araç (EV) sürücülerinin hayatını kolaylaştırmak amacıyla kurulmuş yenilikçi bir dijital harita platformudur. 🚗💨</p>
+            <p class="card-text">Yollarda şarj kaygısını ortadan kaldırmak için Türkiye genelindeki tüm şarj istasyonlarının konumlarını, güncel durumlarını ve detaylarını tek bir noktada topluyoruz. Teknolojiyi ve sürdürülebilirliği bir araya getirerek, çevre dostu yolculuklarınızda size rehberlik etmekten mutluluk duyuyoruz. Sektörün en dinamik rehberi olarak, daha yeşil bir gelecek ve kesintisiz bir sürüş deneyimi için her gün haritamızı güncelliyor ve geliştiriyoruz. 🌍⚡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

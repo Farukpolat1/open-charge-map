@@ -1,6 +1,156 @@
-<h1>Welcome to Open Charge Map</h1>
-<p>Explore charging stations across Turkey.</p>
-<li>
-  <%= link_to "View Charging Station Map", "/map" %>
-</li>
+<main class="hero-section">
+  <div class="hero-container">
+    <h1>Türkiye'nin En Güncel Şarj İstasyonu Haritası ⚡️</h1>
+    <p>Yolculuğa ara vermeyin. Çevrenizdeki en yakın ve uygun şarj noktalarını anında bulun.</p>
+  </div>
+  <div class="live-status">
+    <span class="pulse-icon"></span>
+    <span>Türkiye genelinde <strong><%= @stations_count %></strong> aktif istasyon güncel olarak listeleniyor!</span>
+  </div>
+</main>
 
+<main class="search-section">
+  <div class="container mt-4 mb-5" data-controller="map_toggle">
+    <div class="text-center mb-4">
+      <h1>Şarj İstasyonlarını Araştırın</h1>
+      <p class="text-muted">Yakınınızdaki istasyonları bulun.</p>
+    </div>
+
+
+    <!--   
+    
+    <%= form_with url: "/search", method: :get, local: true, class: "d-flex justify-content-center mb-4" do %>
+      <div class="input-group" style="max-width: 500px;">
+        <input type="text" name="location" value="<%= params[:location] %>" class="form-control" placeholder="Şehir adı girin (örn. İstanbul)">
+        <button type="submit" class="btn btn-primary">Ara</button>
+      </div>
+    <% end %>
+    -->
+  
+    <div class="d-lg-none mb-3 text-center">
+      <button class="btn btn-outline-primary me-2" data-action="click->map_toggle#showList">Liste</button>
+      <button class="btn btn-outline-primary" data-action="click->map_toggle#showMap">Harita</button>
+    </div>
+
+    <div class="map-filter-panel p-3 p-md-4">
+    <div class="row align-items-stretch">
+      <div class="col-lg-5 mb-4" data-map_toggle-target="list">
+            <%= form_with url: "/search", method: :get, local: true, data: { controller: "location-filter" } do %>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">Mesafe Filtresi</h6>
+                  <p class="mb-2">Mesafe: <span id="distance-value"><%= params[:distance].presence || 10 %></span> km</p>
+                  <input type="range" name="distance" class="form-range" id="distance-slider" min="1" max="50" value="<%= params[:distance].presence || 10 %>" onchange="this.form.requestSubmit()">
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">İl Filtresi</h6>
+
+                  <select name="il" class="form-select" data-location-filter-target="province" data-action="change->location-filter#updateDistricts">
+                    <option value="">İl seçin</option>
+                    <% @provinces.each do |il| %>
+                      <option value="<%= il %>" <%= "selected" if il == params[:il] %>><%= il %></option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h6 class="card-title">İlçe Filtresi</h6>
+
+                  <select name="ilce" class="form-select" data-location-filter-target="district" onchange="this.form.requestSubmit()">
+                    <% if params[:il].present? %>
+                      <% (TurkeyLocationService.districts_for(params[:il]) || []).each do |ilce| %>
+                        <option value="<%= ilce %>" <%= "selected" if ilce == params[:ilce] %>><%= ilce %></option>
+                      <% end %>
+                    <% else %>
+                      <option value="">Önce il seçin</option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2 mb-3">
+                <button type="submit" class="btn btn-primary flex-fill">Filtrele</button>
+                <%= link_to "Temizle", root_path, class: "btn btn-outline-secondary flex-fill" %>
+              </div>
+    <% end %>
+
+      <div id="no-stations-message" class="alert alert-warning d-none">
+        Bu filtrede istasyon bulunamadı.
+      </div>
+      </div>
+
+      <div class="col-lg-7 mb-4 d-none d-lg-block" data-map_toggle-target="map">
+        <div class="d-flex justify-content-end mb-2">
+          <span class="text-muted small">Haritada gösterilen: <strong id="visible-station-count">0</strong> istasyon</span>
+        </div>
+        <div class="card shadow-sm h-100">
+          <div class="card-body p-0 position-relative">
+            <div id="map" class="split-map rounded"></div>
+
+            <div class="position-absolute bottom-0 end-0 m-3 bg-white rounded shadow-sm p-2" style="z-index: 1000;">
+              <div class="d-flex align-items-center mb-1">
+                <span class="station-marker station-marker-ocm me-2 d-inline-block"></span>
+                <small>OCM İstasyonu</small>
+              </div>
+              <div class="d-flex align-items-center">
+                <span class="station-marker station-marker-local me-2 d-inline-block"></span>
+                <small>Kullanıcı Eklemesi</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <%= render "shared/station_detail_panel" %>
+
+  <script type="module">
+      import { initStationDetailPanel } from "station_detail_panel";
+      import { createStationLayer } from "station_markers";
+      var showStationDetail = initStationDetailPanel();
+
+          var stations = <%= (@stations || []).to_json.html_safe %>;
+          var hasSearched = <%= (!@stations.nil?).to_json %>;
+          window.turkeyDistricts = <%= TURKEY_PROVINCES_DATA.to_json.html_safe %>;
+      var map = L.map("map");
+      map.fitBounds([[35.8, 25.6], [42.1, 44.8]]);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+      var stationLayer = createStationLayer(map);
+
+      function drawMarkers(maxDistance) {
+        // Mesafeye uyan istasyonları filtrele
+        var filtered = stations.filter(function(station) {
+          return station.AddressInfo.Distance <= maxDistance;
+        });
+
+        stationLayer.render(filtered, showStationDetail, "visible-station-count");
+
+        // Sadece bir arama/filtre yapılmışsa ve sonuç boşsa uyarı mesajını göster
+        var noStationsMessage = document.getElementById("no-stations-message");
+        if (noStationsMessage) {
+          noStationsMessage.classList.toggle("d-none", !hasSearched || filtered.length > 0);
+        }
+      }
+
+      // İlk yüklemede, slider'ın başlangıç değeriyle çiz
+      var slider = document.getElementById("distance-slider");
+      var valueLabel = document.getElementById("distance-value");
+
+      if (slider) {
+        drawMarkers(parseInt(slider.value));
+
+        slider.addEventListener("input", function() {
+          valueLabel.textContent = slider.value;
+          drawMarkers(parseInt(slider.value));
+        });
+      }
+    </script>
+</main>

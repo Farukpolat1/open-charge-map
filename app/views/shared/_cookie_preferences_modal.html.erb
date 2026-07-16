@@ -1,0 +1,36 @@
+<div class="modal fade" id="cookiePreferencesModal" tabindex="-1" aria-labelledby="cookiePreferencesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" data-controller="cookie-preferences">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cookiePreferencesModalLabel">Çerez Tercihlerimi Yönet</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" type="checkbox" role="switch" id="cookieNecessary" checked disabled>
+          <label class="form-check-label" for="cookieNecessary">
+            <strong>Zorunlu Çerezler</strong>
+            <div class="text-muted small">Oturum açma ve temel işlevler için gereklidir, devre dışı bırakılamaz.</div>
+          </label>
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" type="checkbox" role="switch" id="cookieAnalytics" data-cookie-preferences-target="analytics">
+          <label class="form-check-label" for="cookieAnalytics">
+            <strong>Analitik Çerezler</strong>
+            <div class="text-muted small">Site kullanımını anlamamıza yardımcı olur.</div>
+          </label>
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input" type="checkbox" role="switch" id="cookieMarketing" data-cookie-preferences-target="marketing">
+          <label class="form-check-label" for="cookieMarketing">
+            <strong>Pazarlama Çerezleri</strong>
+            <div class="text-muted small">Size özel içerik göstermek için kullanılır.</div>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning fw-semibold" data-action="click->cookie-preferences#save">Tercihlerimi Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>
