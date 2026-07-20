@@ -21,6 +21,7 @@ Türkiye genelindeki tüm elektrikli araç şarj istasyonlarını tek bir platfo
 
 ## ⚡️ Misyonumuz
 
+
 EV sürücülerine en güncel, doğru ve anlık istasyon bilgilerini sunarak şarj noktası bulmayı kolaylaştırmak; Türkiye'nin elektrikli araç dönüşümüne ve sürdürülebilir geleceğe hızlı, pratik çözümlerle katkıda bulunmak.
 
 ## ✨ Özellikler
