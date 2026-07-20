@@ -3,86 +3,164 @@
     <div class="alert alert-success py-2"><%= flash[:notice] %></div>
   <% end %>
 
-  <div class="mb-4">
-    <h1 class="h4 mb-1">Merhaba, <%= current_user.name.presence || "Kullanıcı" %></h1>
-    <p class="text-muted mb-0">Panelinden eklediğin istasyonları yönetebilirsin.</p>
-  </div>
-
-  <div class="row g-3 mb-4">
-    <div class="col-sm-6">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="stat-tile-label">Eklediğim istasyon</div>
-          <div class="stat-tile-value"><%= @stations.size %></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="stat-tile-label">Favori sayım</div>
-          <div class="stat-tile-value"><%= @favorites.size %></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card shadow-sm border-0 mb-4">
-    <div class="card-body p-4">
-      <div class="d-flex justify-content-between align-items-start">
-        <div>
-          <h2 class="text-muted text-uppercase small mb-1">Hesap Bilgileri</h2>
-          <p class="mb-0"><strong><%= current_user.name.presence || "İsimsiz Kullanıcı" %></strong> · <%= current_user.email_address %></p>
-          <p class="text-muted small mb-0 mt-2">Üye olma tarihi: <%= current_user.created_at.strftime("%d.%m.%Y") %></p>
-        </div>
-        <%= link_to "Profili Düzenle", edit_profile_path, class: "btn btn-outline-secondary btn-sm" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-      <h2 class="h5 mb-0">Eklediğim İstasyonlar</h2>
-      <p class="text-muted small mb-0">Toplam <%= @total_connectors %> konnektör</p>
-    </div>
-    <%= link_to "Yeni İstasyon Ekle", new_station_path, class: "btn btn-warning btn-sm fw-semibold" %>
-  </div>
-
-  <% if @stations.any? %>
-    <ul class="list-group shadow-sm">
-      <% @stations.each do |station| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <h6 class="mb-1"><%= link_to station.title, "/stations/local-#{station.id}" %></h6>
-            <p class="mb-0 text-muted small"><%= [ station.address_line, station.district, station.province ].select(&:present?).join(", ") %></p>
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body p-4 text-center">
+          <div class="profile-avatar mx-auto mb-3">
+            <%= (current_user.name.presence || current_user.email_address).first.upcase %>
           </div>
-          <div class="d-flex gap-2">
-            <%= link_to "Düzenle", edit_station_path(station), class: "btn btn-outline-secondary btn-sm" %>
-            <%= button_to "Sil", station_path(station), method: :delete, class: "btn btn-outline-danger btn-sm", form: { data: { turbo_confirm: "Bu istasyonu silmek istediğinize emin misiniz?" } } %>
+          <h2 class="h5 mb-1"><%= current_user.name.presence || "İsimsiz Kullanıcı" %></h2>
+          <p class="text-muted small mb-4"><%= current_user.email_address %></p>
+
+          <ul class="list-unstyled text-start profile-info-list mb-4">
+            <li class="d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Eklediğim istasyon</span>
+              <span class="fw-semibold"><%= @stations.size %></span>
+            </li>
+            <li class="d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Favori sayım</span>
+              <span class="fw-semibold"><%= @favorites.size %></span>
+            </li>
+            <li class="d-flex justify-content-between py-2">
+              <span class="text-muted small">Üye olma tarihi</span>
+              <span class="fw-semibold"><%= current_user.created_at.strftime("%d.%m.%Y") %></span>
+            </li>
+          </ul>
+
+          <div class="d-grid gap-2">
+            <%= link_to "Profili Düzenle", edit_profile_path, class: "btn btn-warning fw-semibold" %>
+            <%= link_to "Şifre Değiştir", new_password_path, class: "btn btn-outline-secondary" %>
           </div>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <div class="alert alert-info">
-      Henüz istasyon eklemediniz. <%= link_to "İlk istasyonunu ekle", new_station_path %>.
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <h2 class="h5 mb-3 mt-4">Favorilerim</h2>
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <ul class="nav nav-tabs mb-4" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-stations" type="button" role="tab">
+                🔌 İstasyonlarım (<%= @stations.size %>)
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-favorites" type="button" role="tab">
+                ⭐ Favorilerim (<%= @favorites.size %>)
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-vehicles" type="button" role="tab">
+                🚗 Araçlarım (<%= @vehicles.size %>)
+              </button>
+            </li>
+          </ul>
 
-  <% if @favorites.any? %>
-    <ul class="list-group shadow-sm">
-      <% @favorites.each do |favorite| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to favorite.station_title, "/stations/#{favorite.station_identifier}" %>
-          <%= button_to "Kaldır", favorite_path(favorite), method: :delete, class: "btn btn-outline-danger btn-sm", form: { data: { turbo_confirm: "Favorilerden kaldırılsın mı?" } } %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <div class="alert alert-info">
-      Henüz favori istasyonunuz yok.
+          <div class="tab-content">
+            <div class="tab-pane fade" id="tab-vehicles" role="tabpanel">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="text-muted small mb-0">Toplam <%= @vehicles.size %> araç</p>
+                <%= link_to "Yeni Araç Ekle", new_vehicle_path, class: "btn btn-warning btn-sm fw-semibold" %>
+              </div>
+
+              <% if @vehicles.any? %>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
+                  <% @vehicles.each do |vehicle| %>
+                    <div class="col">
+                      <div class="vehicle-card card border-0 shadow-sm h-100">
+                        <div class="vehicle-card-logo">
+                          <% logo_url = VEHICLE_BRANDS_DATA.dig(vehicle.brand, "logo_url") %>
+                          <% if logo_url.present? %>
+                            <%= image_tag logo_url, alt: vehicle.brand, class: "vehicle-card-logo-img" %>
+                          <% else %>
+                            <span class="vehicle-card-logo-fallback">🚗</span>
+                          <% end %>
+                        </div>
+
+                        <div class="card-body pb-2">
+                          <div class="vehicle-card-brand"><%= "#{vehicle.brand} #{vehicle.model}".upcase %></div>
+                          <% if vehicle.year.present? %>
+                            <p class="text-muted small mb-3">Üretim Yılı: <%= vehicle.year %></p>
+                          <% end %>
+
+                          <div class="d-flex gap-2">
+                            <% if vehicle.battery_capacity.present? %>
+                              <div class="vehicle-stat-box flex-fill">
+                                <div class="vehicle-stat-value"><%= number_with_precision(vehicle.battery_capacity, precision: 2) %> kWh</div>
+                                <div class="vehicle-stat-label">Batarya</div>
+                              </div>
+                            <% end %>
+                            <% if vehicle.max_charge_power.present? %>
+                              <div class="vehicle-stat-box flex-fill">
+                                <div class="vehicle-stat-value"><%= number_with_precision(vehicle.max_charge_power, precision: 2) %> kW</div>
+                                <div class="vehicle-stat-label">Şarj Gücü</div>
+                              </div>
+                            <% end %>
+                          </div>
+                        </div>
+
+                        <div class="card-footer bg-transparent border-0 d-flex gap-2 pt-0 pb-3">
+                          <%= link_to "Şarj Geçmişi", vehicle_charging_sessions_path(vehicle), class: "btn btn-outline-primary btn-sm flex-fill" %>
+                          <%= button_to "Sil", vehicle_path(vehicle), method: :delete, class: "btn btn-outline-danger btn-sm", form: { data: { turbo_confirm: "Bu aracı silmek istediğinize emin misiniz?" } } %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="alert alert-info mb-0">
+                  Henüz araç eklemediniz. <%= link_to "İlk aracını ekle", new_vehicle_path %>.
+                </div>
+              <% end %>
+            </div>
+            <div class="tab-pane fade show active" id="tab-stations" role="tabpanel">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="text-muted small mb-0">Toplam <%= @total_connectors %> konnektör</p>
+                <%= link_to "Yeni İstasyon Ekle", new_station_path, class: "btn btn-warning btn-sm fw-semibold" %>
+              </div>
+
+              <% if @stations.any? %>
+                <ul class="list-group list-group-flush">
+                  <% @stations.each do |station| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                      <div>
+                        <h6 class="mb-1"><%= link_to station.title, "/stations/local-#{station.id}" %></h6>
+                        <p class="mb-0 text-muted small"><%= [ station.address_line, station.district, station.province ].select(&:present?).join(", ") %></p>
+                      </div>
+                      <div class="d-flex gap-2">
+                        <%= link_to "Düzenle", edit_station_path(station), class: "btn btn-outline-secondary btn-sm" %>
+                        <%= button_to "Sil", station_path(station), method: :delete, class: "btn btn-outline-danger btn-sm", form: { data: { turbo_confirm: "Bu istasyonu silmek istediğinize emin misiniz?" } } %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <div class="alert alert-info mb-0">
+                  Henüz istasyon eklemediniz. <%= link_to "İlk istasyonunu ekle", new_station_path %>.
+                </div>
+              <% end %>
+            </div>
+
+            <div class="tab-pane fade" id="tab-favorites" role="tabpanel">
+              <% if @favorites.any? %>
+                <ul class="list-group list-group-flush">
+                  <% @favorites.each do |favorite| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                      <%= link_to favorite.station_title, "/stations/#{favorite.station_identifier}" %>
+                      <%= button_to "Kaldır", favorite_path(favorite), method: :delete, class: "btn btn-outline-danger btn-sm", form: { data: { turbo_confirm: "Favorilerden kaldırılsın mı?" } } %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <div class="alert alert-info mb-0">
+                  Henüz favori istasyonunuz yok.
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>

@@ -1,53 +1,266 @@
-<div class="container-fluid mt-4" data-controller="map_toggle">
-  <h1 class="mb-4">Şarj İstasyonları</h1>
-
-  <div class="d-lg-none mb-3">
-    <button class="btn btn-outline-primary me-2" data-action="click->map_toggle#showList">Liste</button>
-    <button class="btn btn-outline-primary" data-action="click->map_toggle#showMap">Harita</button>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-5 mb-4" data-map_toggle-target="list">
-      <ul class="list-group">
-        <% if @stations %>
-          <% @stations.each do |station| %>
-            <li class="list-group-item">
-              <h5 class="mb-1"><%= link_to station["AddressInfo"]["Title"], "/stations/#{station["ID"]}" %><%= station_status_badge(station) %></h5>
-              <p class="mb-1 text-muted">
-                <%= station["AddressInfo"]["AddressLine1"] %>, <%= station["AddressInfo"]["Town"] %>, <%= station["AddressInfo"]["StateOrProvince"] %>
-              </p>
-              <% if station["AddressInfo"]["Distance"].present? %>
-                <small>Mesafe: <%= "%.1f" % station["AddressInfo"]["Distance"] %> km</small>
-              <% end %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="col-lg-7 d-none d-lg-block" data-map_toggle-target="map">
-      <div class="d-flex justify-content-end mb-2">
-        <span class="text-muted small">Haritada gösterilen: <strong id="visible-station-count">0</strong> istasyon</span>
+<div class="stations-hero">
+  <div class="container text-center">
+    <h1 class="mb-2">İstasyon Listesi</h1>
+    <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+      <div class="view-toggle">
+        <%= link_to "🗺️ Harita", root_path, class: "view-toggle-link" %>
+        <span class="view-toggle-link active">📋 Liste</span>
       </div>
-      <div id="map" class="rounded shadow-sm" style="height: 600px;"></div>
+      <span class="hero-live-count">
+        <span class="pulse-icon"></span>
+        Şu anda listede <strong id="station-total-count"><%= (@stations || []).size %></strong> şarj istasyonu bulunuyor
+      </span>
     </div>
   </div>
-
-  <%= render "shared/station_detail_panel" %>
 </div>
 
-<script type="module">
-  import { initStationDetailPanel } from "station_detail_panel";
-  import { createStationLayer } from "station_markers";
-  var showStationDetail = initStationDetailPanel();
+<div class="container my-4">
+  <div class="row g-4">
+    <div class="col-lg-3">
+      <div class="card shadow-sm border-0 filter-sidebar station-filter-card">
+        <div class="card-body p-3">
+          <h6 class="text-uppercase small fw-bold text-muted mb-3">🔎 Filtrele</h6>
 
-  var stations = <%= (@stations || []).to_json.html_safe %>;
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">📍 İl Filtresi</label>
+            <select id="station-filter-il" class="form-select form-select-sm">
+              <option value="">Tüm İller</option>
+            </select>
+          </div>
 
-  var map = L.map("map");
-  map.fitBounds([[35.8, 25.6], [42.1, 44.8]]);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">🏘️ İlçe Filtresi</label>
+            <select id="station-filter-ilce" class="form-select form-select-sm">
+              <option value="">Tüm İlçeler</option>
+            </select>
+          </div>
 
-  var stationLayer = createStationLayer(map);
-  stationLayer.render(stations, showStationDetail, "visible-station-count");
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">✏️ İstasyon Adı Ara</label>
+            <input type="search" id="station-table-search" class="form-control form-control-sm" placeholder="İstasyon adı...">
+          </div>
+
+          <button type="button" id="station-filter-clear" class="btn btn-outline-secondary btn-sm w-100">✕ Temizle</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-3 p-md-4">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <label for="station-page-size" class="small text-muted mb-0">Sayfada</label>
+              <select id="station-page-size" class="form-select form-select-sm" style="width: auto;">
+                <option value="15">15</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="99999">Tümü</option>
+              </select>
+              <span class="small text-muted">kayıt göster</span>
+            </div>
+            <span class="text-muted small" id="station-results-summary"></span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="station-table">
+              <thead>
+                <tr>
+                  <th data-sort="province" role="button">İl</th>
+                  <th data-sort="district" role="button">İlçe</th>
+                  <th data-sort="title" role="button">İstasyon Adı</th>
+                  <th>Durum</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% (@stations || []).each do |station| %>
+                  <% info = station["AddressInfo"] || {} %>
+                  <tr data-province="<%= info["StateOrProvince"].to_s.downcase %>" data-district="<%= info["Town"].to_s.downcase %>" data-title="<%= info["Title"].to_s.downcase %>">
+                    <td class="fw-semibold text-primary"><%= info["StateOrProvince"] %></td>
+                    <td><%= info["Town"] %></td>
+                    <td>
+                      <span class="station-dot <%= station["ID"].to_s.start_with?("local-") ? "station-marker-local" : "station-marker-ocm" %> me-2"></span>
+                      <%= link_to info["Title"], "/stations/#{station["ID"]}" %>
+                    </td>
+                    <td><%= station_status_badge(station) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <p id="station-table-empty" class="text-muted text-center py-4 d-none">Aramanızla eşleşen istasyon bulunamadı.</p>
+
+          <nav class="mt-3">
+            <ul class="pagination pagination-sm justify-content-center mb-0" id="station-pagination"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var table = document.getElementById("station-table");
+    var allRows = Array.from(table.querySelectorAll("tbody tr"));
+    var tbody = table.querySelector("tbody");
+    var emptyMessage = document.getElementById("station-table-empty");
+    var totalCount = document.getElementById("station-total-count");
+    var resultsSummary = document.getElementById("station-results-summary");
+    var pagination = document.getElementById("station-pagination");
+
+    var searchInput = document.getElementById("station-table-search");
+    var ilSelect = document.getElementById("station-filter-il");
+    var ilceSelect = document.getElementById("station-filter-ilce");
+    var pageSizeSelect = document.getElementById("station-page-size");
+    var clearButton = document.getElementById("station-filter-clear");
+
+    var currentPage = 1;
+    var visibleRows = allRows;
+
+    function uniqueSorted(values) {
+      return Array.from(new Set(values)).filter(Boolean).sort(function(a, b) {
+        return a.localeCompare(b, "tr");
+      });
+    }
+
+    function populateIlOptions() {
+      var provinces = uniqueSorted(allRows.map(function(row) { return row.dataset.province; }));
+      ilSelect.innerHTML = '<option value="">Tüm İller</option>' +
+        provinces.map(function(p) { return '<option value="' + p + '">' + p.toLocaleUpperCase("tr") + '</option>'; }).join("");
+    }
+
+    function populateIlceOptions() {
+      var selectedIl = ilSelect.value;
+      var pool = selectedIl ? allRows.filter(function(row) { return row.dataset.province === selectedIl; }) : allRows;
+      var districts = uniqueSorted(pool.map(function(row) { return row.dataset.district; }));
+      ilceSelect.innerHTML = '<option value="">Tüm İlçeler</option>' +
+        districts.map(function(d) { return '<option value="' + d + '">' + d.toLocaleUpperCase("tr") + '</option>'; }).join("");
+    }
+
+    function applyFilters() {
+      var query = searchInput.value.trim().toLowerCase();
+      var il = ilSelect.value;
+      var ilce = ilceSelect.value;
+
+      visibleRows = allRows.filter(function(row) {
+        var matchesQuery = !query || row.dataset.title.includes(query);
+        var matchesIl = !il || row.dataset.province === il;
+        var matchesIlce = !ilce || row.dataset.district === ilce;
+        return matchesQuery && matchesIl && matchesIlce;
+      });
+
+      totalCount.textContent = visibleRows.length;
+      currentPage = 1;
+      renderPage();
+    }
+
+    function renderPage() {
+      var pageSize = parseInt(pageSizeSelect.value, 10);
+      var totalPages = Math.max(1, Math.ceil(visibleRows.length / pageSize));
+      currentPage = Math.min(currentPage, totalPages);
+
+      var start = (currentPage - 1) * pageSize;
+      var pageRows = visibleRows.slice(start, start + pageSize);
+
+      allRows.forEach(function(row) { row.classList.add("d-none"); });
+      pageRows.forEach(function(row) { row.classList.remove("d-none"); tbody.appendChild(row); });
+
+      emptyMessage.classList.toggle("d-none", visibleRows.length > 0);
+
+      if (visibleRows.length === 0) {
+        resultsSummary.textContent = "";
+      } else {
+        resultsSummary.textContent = visibleRows.length + " kayıttan " + (start + 1) + "-" + Math.min(start + pageSize, visibleRows.length) + " arasındaki kayıtlar gösteriliyor";
+      }
+
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      pagination.innerHTML = "";
+      if (totalPages <= 1) return;
+
+      function addItem(label, page, disabled, active) {
+        var li = document.createElement("li");
+        li.className = "page-item" + (disabled ? " disabled" : "") + (active ? " active" : "");
+        var a = document.createElement("a");
+        a.className = "page-link";
+        a.href = "#";
+        a.textContent = label;
+        a.addEventListener("click", function(e) {
+          e.preventDefault();
+          if (!disabled) { currentPage = page; renderPage(); }
+        });
+        li.appendChild(a);
+        pagination.appendChild(li);
+      }
+
+      function addEllipsis() {
+        var li = document.createElement("li");
+        li.className = "page-item disabled";
+        li.innerHTML = '<span class="page-link border-0 bg-transparent">…</span>';
+        pagination.appendChild(li);
+      }
+
+      addItem("İlk", 1, currentPage === 1, false);
+      addItem("‹", currentPage - 1, currentPage === 1, false);
+
+      // Sadece mevcut sayfanın etrafındaki birkaç sayfayı + ilk/son sayfayı göster,
+      // aradakileri "…" ile kısalt (141 sayfa numarasını tek satırda dökmemek için)
+      var windowSize = 2;
+      var pageSet = new Set([ 1, totalPages ]);
+      for (var p = currentPage - windowSize; p <= currentPage + windowSize; p++) {
+        if (p >= 1 && p <= totalPages) pageSet.add(p);
+      }
+      var sortedPages = Array.from(pageSet).sort(function(a, b) { return a - b; });
+
+      var previousPage = null;
+      sortedPages.forEach(function(p) {
+        if (previousPage !== null && p - previousPage > 1) addEllipsis();
+        addItem(String(p), p, false, p === currentPage);
+        previousPage = p;
+      });
+
+      addItem("›", currentPage + 1, currentPage === totalPages, false);
+      addItem("Son", totalPages, currentPage === totalPages, false);
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+    ilceSelect.addEventListener("change", applyFilters);
+    pageSizeSelect.addEventListener("change", function() { currentPage = 1; renderPage(); });
+    ilSelect.addEventListener("change", function() {
+      populateIlceOptions();
+      applyFilters();
+    });
+    clearButton.addEventListener("click", function() {
+      searchInput.value = "";
+      ilSelect.value = "";
+      populateIlceOptions();
+      applyFilters();
+    });
+
+    var sortDirections = {};
+    table.querySelectorAll("th[data-sort]").forEach(function(header) {
+      header.addEventListener("click", function() {
+        var key = header.dataset.sort;
+        var direction = sortDirections[key] === "asc" ? "desc" : "asc";
+        sortDirections = {};
+        sortDirections[key] = direction;
+
+        allRows.sort(function(a, b) {
+          var valueA = a.dataset[key] || "";
+          var valueB = b.dataset[key] || "";
+          return direction === "asc" ? valueA.localeCompare(valueB, "tr") : valueB.localeCompare(valueA, "tr");
+        });
+
+        applyFilters();
+      });
+    });
+
+    populateIlOptions();
+    populateIlceOptions();
+    renderPage();
+  })();
 </script>
-

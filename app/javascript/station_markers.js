@@ -8,6 +8,16 @@ function isLocalStation(station) {
   return typeof station.ID === "string" && station.ID.indexOf("local-") === 0;
 }
 
+// OCM verisinde bazı istasyonların koordinatı eksik/hatalı olup (0, 0) olarak geliyor
+// (Nijerya açıklarındaki "null island"). Böyle kayıtlar haritanın Türkiye dışına
+// zum yapmasına sebep oluyor, bu yüzden Türkiye sınırları dışındaki koordinatları eliyoruz.
+function hasValidTurkeyCoordinates(station) {
+  var lat = station.AddressInfo.Latitude;
+  var lng = station.AddressInfo.Longitude;
+  return typeof lat === "number" && typeof lng === "number" &&
+    lat >= 35 && lat <= 43 && lng >= 25 && lng <= 45.5;
+}
+
 export function createStationLayer(map) {
   const clusterGroup = L.markerClusterGroup();
   map.addLayer(clusterGroup);
@@ -16,7 +26,9 @@ export function createStationLayer(map) {
     render: function(stations, showStationDetail, countElementId) {
       clusterGroup.clearLayers();
 
-      const markers = stations.map(function(station) {
+      const validStations = stations.filter(hasValidTurkeyCoordinates);
+
+      const markers = validStations.map(function(station) {
         const marker = L.marker(
           [station.AddressInfo.Latitude, station.AddressInfo.Longitude],
           { icon: isLocalStation(station) ? LOCAL_ICON : OCM_ICON }
@@ -28,7 +40,7 @@ export function createStationLayer(map) {
 
       if (countElementId) {
         const countEl = document.getElementById(countElementId);
-        if (countEl) countEl.textContent = stations.length;
+        if (countEl) countEl.textContent = validStations.length;
       }
 
       if (markers.length > 0) {

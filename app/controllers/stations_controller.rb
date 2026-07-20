@@ -1,14 +1,12 @@
 class StationsController < ApplicationController
+  include StationDataHelpers
+
   allow_unauthenticated_access only: %i[index show map search]
 
   def index
-    @stations = @service.stations_nearby(params[:lat], params[:lng])
-    if params[:lat].present? && params[:lng].present?
-      local = Station.all.map { |s| s.as_ocm_json(distance: Station.haversine_km(params[:lat].to_f, params[:lng].to_f, s.latitude, s.longitude), current_user: current_user) }
-    else
-    local = Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
-    end
-    @stations += local
+    @stations = @service.all_stations
+    @stations += Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
+    TurkeyLocationService.normalize_addresses!(@stations)
     attach_latest_status(@stations)
     attach_rating_counts(@stations)
   end
@@ -73,6 +71,7 @@ class StationsController < ApplicationController
     local = Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
   end
   @stations += local
+  TurkeyLocationService.normalize_addresses!(@stations)
   attach_latest_status(@stations)
   attach_rating_counts(@stations)
   @provinces = TurkeyLocationService.provinces
@@ -82,17 +81,22 @@ class StationsController < ApplicationController
   location = params[:location]
   location = [ params[:ilce], params[:il] ].select(&:present?).join(", ") if params[:il].present?
 
+  @location_filtered = location.present?
+
   if location.present?
     coordinates = GeocodingService.new.geocode(location)
     if coordinates
       @stations = @service.stations_nearby(coordinates[:latitude], coordinates[:longitude], params[:distance])
       local = Station.all.map { |s| s.as_ocm_json(distance: Station.haversine_km(coordinates[:latitude].to_f, coordinates[:longitude].to_f, s.latitude, s.longitude), current_user: current_user) }
       @stations += local
+    else
+      @stations = []
     end
   else
     @stations = @service.all_stations
     @stations += Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
   end
+  TurkeyLocationService.normalize_addresses!(@stations)
   attach_latest_status(@stations)
   attach_rating_counts(@stations)
   @provinces = TurkeyLocationService.provinces
@@ -108,30 +112,5 @@ class StationsController < ApplicationController
   def station_params
     params.require(:station).permit(:title, :address_line, :town, :province,
      :district, :latitude, :longitude, :connector_type, :level, :quantity, :description)
-  end
-
-  def attach_latest_status(stations)
-    return stations if stations.blank?
-
-    identifiers = stations.map { |s| s["ID"].to_s }
-    latest = StatusReport.latest_by_identifier(identifiers)
-    stations.each do |station|
-      report = latest[station["ID"].to_s]
-      station["LatestStatus"] = report&.status
-    end
-    stations
-  end
-
-  def attach_rating_counts(stations)
-    return stations if stations.blank?
-
-    identifiers = stations.map { |s| s["ID"].to_s }
-    counts = StationRating.counts_by_identifier(identifiers)
-    stations.each do |station|
-      id = station["ID"].to_s
-      station["LikeCount"] = counts[[ id, true ]] || 0
-      station["DislikeCount"] = counts[[ id, false ]] || 0
-    end
-    stations
   end
 end

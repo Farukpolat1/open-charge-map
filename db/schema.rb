@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_16_121812) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_20_090000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "charging_sessions", force: :cascade do |t|
+    t.decimal "amount_paid"
+    t.datetime "created_at", null: false
+    t.integer "duration_minutes"
+    t.decimal "kwh_used"
+    t.decimal "power_kw"
+    t.datetime "started_at"
+    t.string "station_name"
+    t.string "status"
+    t.datetime "updated_at", null: false
+    t.bigint "vehicle_id", null: false
+    t.index ["vehicle_id"], name: "index_charging_sessions_on_vehicle_id"
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -54,6 +68,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_16_121812) do
     t.decimal "latitude"
     t.string "level"
     t.decimal "longitude"
+    t.decimal "power_kw"
     t.string "province"
     t.integer "quantity"
     t.string "title"
@@ -83,9 +98,23 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_16_121812) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.decimal "battery_capacity"
+    t.string "brand"
+    t.datetime "created_at", null: false
+    t.decimal "max_charge_power"
+    t.string "model"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.integer "year"
+    t.index ["user_id"], name: "index_vehicles_on_user_id"
+  end
+
+  add_foreign_key "charging_sessions", "vehicles"
   add_foreign_key "favorites", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "station_ratings", "users"
   add_foreign_key "stations", "users"
   add_foreign_key "status_reports", "users"
+  add_foreign_key "vehicles", "users"
 end

@@ -51,7 +51,7 @@
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item"><%= link_to "Anasayfa", root_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "Hakkımızda", about_path, class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Şarj İstasyonları", map_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Şarj İstasyonları", stations_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "Bize Ulaşın", contact_path, class: "nav-link" %></li>
             <% if authenticated? %>
               <li class="nav-item dropdown ms-lg-3">
@@ -95,7 +95,7 @@
             <ul class="list-unstyled footer-links">
               <li><%= link_to "Anasayfa", root_path %></li>
               <li><%= link_to "Hakkımızda", about_path %></li>
-              <li><%= link_to "Şarj İstasyonları", map_path %></li>
+              <li><%= link_to "Şarj İstasyonları", stations_path %></li>
               <li><%= link_to "Bize Ulaşın", contact_path %></li>
             </ul>
           </div>

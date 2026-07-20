@@ -1,0 +1,38 @@
+<h1><%= @vehicle.brand %> <%= @vehicle.model %> — Şarj Geçmişi</h1>
+
+<% if @vehicle.charging_sessions.where(status: "active").none? %>
+  <%= link_to "Yeni Şarj Başlat", new_vehicle_charging_session_path(@vehicle), class: "btn btn-warning mb-3" %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>İstasyon</th>
+      <th>Güç (kW)</th>
+      <th>Süre (dk)</th>
+      <th>Ödenen (TL)</th>
+      <th>Kullanılan (kWh)</th>
+      <th>Durum</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @charging_sessions.each do |session| %>
+      <tr>
+        <td><%= session.station_name %></td>
+        <td><%= session.power_kw %></td>
+        <td><%= session.duration_minutes %></td>
+        <td><%= session.amount_paid %></td>
+        <td><%= session.kwh_used %></td>
+        <td><%= session.status %></td>
+        <td>
+          <% if session.status == "active" %>
+            <%= link_to "Şarjı Bitir", edit_vehicle_charging_session_path(@vehicle, session), class: "btn btn-sm btn-primary" %>
+          <% else %>
+            <%= button_to "Sil", vehicle_charging_session_path(@vehicle, session), method: :delete, class: "btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

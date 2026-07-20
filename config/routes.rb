@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :favorites, only: [ :create, :destroy ]
   resources :status_reports, only: [ :create ]
   resources :station_ratings, only: [ :create, :destroy ]
+  resources :vehicles do
+    resources :charging_sessions
+  end
 
   get "/map", to: "stations#map"
   root "pages#home"

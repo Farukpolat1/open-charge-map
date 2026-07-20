@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle: one
+  station_name: MyString
+  power_kw: 9.99
+  duration_minutes: 1
+  amount_paid: 9.99
+  kwh_used: 9.99
+  started_at: 2026-07-17 11:29:14
+  status: MyString
+
+two:
+  vehicle: two
+  station_name: MyString
+  power_kw: 9.99
+  duration_minutes: 1
+  amount_paid: 9.99
+  kwh_used: 9.99
+  started_at: 2026-07-17 11:29:14
+  status: MyString

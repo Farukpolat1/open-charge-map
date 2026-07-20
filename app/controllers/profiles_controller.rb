@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
     @stations = current_user.stations.order(created_at: :desc)
     @total_connectors = @stations.sum { |s| s.quantity || 0 }
     @favorites = current_user.favorites.order(created_at: :desc)
+    @vehicles = current_user.vehicles
   end
 
   def edit

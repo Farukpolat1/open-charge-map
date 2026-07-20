@@ -34,7 +34,7 @@ class OpenChargeMapsService
       output: "json",
       key: @api_key,
       countrycode: "TR",
-      maxresults: 500
+      maxresults: 5000
     })
     response.parsed_response
   end

@@ -1,0 +1,5 @@
+<h1>Araç Ekle</h1>
+<%= form_with model: @vehicle do |form| %>
+  <%= render "form", form: form, vehicle: @vehicle %>
+  <%= form.submit "Aracı Ekle", class: "btn btn-warning w-100 fw-semibold" %>
+<% end %>

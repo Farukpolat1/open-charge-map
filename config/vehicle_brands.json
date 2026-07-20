@@ -1,0 +1,1044 @@
+{
+  "elektrikli_araclar": [
+    {
+      "marka": "Tesla",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
+      "modeller": [
+        {
+          "isim": "Model S",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Model 3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Model X",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Model Y",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Cybertruck",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Roadster",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Togg",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Togg_logo.svg",
+      "modeller": [
+        {
+          "isim": "T10X",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "T10F",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "BYD",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/BYD_logo.svg",
+      "modeller": [
+        {
+          "isim": "Atto 3",
+          "batarya_kwh": 60.48,
+          "sarj_gucu_kw": 88
+        },
+        {
+          "isim": "Dolphin",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Seal",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Han",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Tang",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Yuan Plus",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Polestar",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Polestar_logo.svg",
+      "modeller": [
+        {
+          "isim": "Polestar 2",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Polestar 3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Polestar 4",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Polestar 5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Polestar 6",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Rivian",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Rivian_logo_and_wordmark.svg",
+      "modeller": [
+        {
+          "isim": "R1T",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "R1S",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "R2",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "R3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Lucid Motors",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Lucid_Motors_logo.svg",
+      "modeller": [
+        {
+          "isim": "Air",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Gravity",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Porsche",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Porsche_logo.svg/200px-Porsche_logo.svg.png",
+      "modeller": [
+        {
+          "isim": "Taycan",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Taycan Cross Turismo",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Macan Electric",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "718 EV (Konsept)",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Hyundai",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Hyundai_Motor_Company_logo.svg",
+      "modeller": [
+        {
+          "isim": "Ioniq 5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Ioniq 6",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Kona Electric",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Kia",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/KIA_logo2.svg",
+      "modeller": [
+        {
+          "isim": "EV3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EV6",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EV9",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Niro EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Soul EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "NIO",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Nio_logo.svg",
+      "modeller": [
+        {
+          "isim": "ES8",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ES6",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EC6",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ET7",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ET5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EL7",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Volkswagen",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Volkswagen_Logo_till_1995.svg",
+      "modeller": [
+        {
+          "isim": "ID.3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ID.4",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ID.5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ID.7",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ID. Buzz",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-Golf",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-up!",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "BMW",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg",
+      "modeller": [
+        {
+          "isim": "i3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "i4",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "i5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "i7",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "iX",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "iX1",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "iX2",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "iX3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Mercedes-Benz",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg",
+      "modeller": [
+        {
+          "isim": "EQA",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQB",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQC",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQE",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQE SUV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQS",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQS SUV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQT",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Audi",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Audi-Logo_2016.svg",
+      "modeller": [
+        {
+          "isim": "Q4 e-tron",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Q8 e-tron",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-tron GT",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "A6 e-tron",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Q6 e-tron",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Ford",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Ford_Motor_Company_Logo.svg",
+      "modeller": [
+        {
+          "isim": "Mustang Mach-E",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "F-150 Lightning",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "E-Transit",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Explorer EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Chevrolet",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png",
+      "modeller": [
+        {
+          "isim": "Bolt EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Bolt EUV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Silverado EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Blazer EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Equinox EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Nissan",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Nissan_logo.png",
+      "modeller": [
+        {
+          "isim": "Leaf",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Ariya",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Sakura",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Toyota",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg",
+      "modeller": [
+        {
+          "isim": "bZ4X",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "bZ3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Honda",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Honda.svg",
+      "modeller": [
+        {
+          "isim": "Honda e",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Prologue",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e:Ny1",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Volvo",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Volvo_Cars_logo.svg",
+      "modeller": [
+        {
+          "isim": "EX30",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "XC40 Recharge",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "C40 Recharge",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EX90",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Renault",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Renault_2021_Text_Logo.svg",
+      "modeller": [
+        {
+          "isim": "Zoe",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Megane E-Tech",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Scenic E-Tech",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Twingo E-Tech",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Renault 5 E-Tech",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Kangoo E-Tech",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Peugeot",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Peugeot_Logo.svg",
+      "modeller": [
+        {
+          "isim": "e-208",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-2008",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-308",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-3008",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-Rifter",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "e-Traveller",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Fiat",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Fiat_Logo_2020.svg",
+      "modeller": [
+        {
+          "isim": "500e",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "600e",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "E-Ulysse",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "MG (Morris Garages)",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/MG_logo_2021.svg",
+      "modeller": [
+        {
+          "isim": "MG4",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ZS EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Marvel R",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "MG5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Cyberster",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Xpeng",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Xpeng_logo.svg",
+      "modeller": [
+        {
+          "isim": "P7",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "G9",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "G3i",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "P5",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "X9",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Fisker",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Fisker_logo.svg",
+      "modeller": [
+        {
+          "isim": "Ocean",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Pear",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Ronin",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Skoda",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Skoda_Auto_logo_%282023%29.svg",
+      "modeller": [
+        {
+          "isim": "Enyaq iV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Enyaq Coupé iV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Elroq",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Mini",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/MINI_logo.svg",
+      "modeller": [
+        {
+          "isim": "Cooper SE",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Countryman SE",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Aceman",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Jaguar",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Jaguar_Cars_logo.svg/200px-Jaguar_Cars_logo.svg.png",
+      "modeller": [
+        {
+          "isim": "I-Pace",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Lexus",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Lexus_logo.svg",
+      "modeller": [
+        {
+          "isim": "RZ 450e",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "UX 300e",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Maserati",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Maserati_logo.svg/200px-Maserati_logo.svg.png",
+      "modeller": [
+        {
+          "isim": "Grecale Folgore",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "GranTurismo Folgore",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Lotus",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/Lotus_Cars_logo.svg/200px-Lotus_Cars_logo.svg.png",
+      "modeller": [
+        {
+          "isim": "Evija",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Eletre",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Emeya",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Opel / Vauxhall",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Opel-Logo_2023.svg",
+      "modeller": [
+        {
+          "isim": "Corsa Electric",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Mokka Electric",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Astra Electric",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Combo-e",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Smart",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Smart_logo.svg",
+      "modeller": [
+        {
+          "isim": "Smart #1",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Smart #3",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "EQ fortwo",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Jeep",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Jeep_logo.svg",
+      "modeller": [
+        {
+          "isim": "Avenger",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Recon",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Wagoneer S",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Zeekr",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Zeekr_logo.svg",
+      "modeller": [
+        {
+          "isim": "001",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "009",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "X",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Cadillac",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Cadillac_Logo.svg",
+      "modeller": [
+        {
+          "isim": "Lyriq",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Celestiq",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Escalade IQ",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "GMC",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/GMC_logo.svg",
+      "modeller": [
+        {
+          "isim": "Hummer EV Pickup",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Hummer EV SUV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "Sierra EV",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Dacia",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Dacia_Logo_2021.svg",
+      "modeller": [
+        {
+          "isim": "Spring",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    },
+    {
+      "marka": "Citroën",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Citroen_Logo_2022.svg",
+      "modeller": [
+        {
+          "isim": "Ami",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ë-C4",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ë-C4 X",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ë-Berlingo",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        },
+        {
+          "isim": "ë-SpaceTourer",
+          "batarya_kwh": null,
+          "sarj_gucu_kw": null
+        }
+      ]
+    }
+  ]
+}

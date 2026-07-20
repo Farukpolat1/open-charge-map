@@ -1,0 +1,39 @@
+<h1>Araçlarım</h1>
+<button type="button" class="btn btn-warning mb-3" data-bs-toggle="modal" data-bs-target="#vehicleModal">
+  Yeni Araç Ekle
+</button>
+
+
+<ul class="list-group">
+  <% @vehicles.each do |vehicle| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= "#{vehicle.brand} #{vehicle.model}" %>
+      <div>
+        <%= link_to "Şarj Geçmişi", vehicle_charging_sessions_path(vehicle), class: "btn btn-sm btn-outline-primary" %>
+        <%= button_to "Sil", vehicle_path(vehicle), method: :delete, class: "btn btn-sm btn-outline-danger", form: { data: { turbo_confirm: "Bu aracı silmek istediğinize emin misiniz?" } } %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_with model: @vehicle, url: vehicles_path do |form| %>
+        <div class="modal-header bg-warning">
+          <h1 class="modal-title fs-5" id="vehicleModalLabel">Elektrikli Araç Ekle</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+        </div>
+
+        <div class="modal-body">
+          <%= render "form", form: form, vehicle: @vehicle %>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <%= form.submit "Kaydet", class: "btn btn-warning fw-semibold" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<script>window.vehicleBrandsData = <%= VEHICLE_BRANDS_DATA.to_json.html_safe %>;</script>
+
+<div data-controller="vehicle-form">
+  <% if vehicle.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% vehicle.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :brand, "Araç Markası", class: "form-label" %> <span class="text-danger">*</span>
+    <%= form.select :brand, options_for_select(VEHICLE_BRANDS_DATA.keys, vehicle.brand),
+          { include_blank: "Seçiniz" },
+          class: "form-select", required: true,
+          data: { vehicle_form_target: "brand", action: "change->vehicle-form#brandChanged" } %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :model, "Araç Modeli", class: "form-label" %> <span class="text-danger">*</span>
+    <%= form.select :model, [], {},
+          class: "form-select", required: true,
+          data: { vehicle_form_target: "model", action: "change->vehicle-form#modelChanged" } %>
+    <div class="form-text" data-vehicle-form-target="hint">
+      Marka seçimi yaptıktan sonra bu alan otomatik olarak doldurulacaktır.
+    </div>
+  </div>
+
+ 
+
+  <div class="mb-3">
+    <%= form.label :year, "Üretim Yılı", class: "form-label" %> <span class="text-danger">*</span>
+    <%= form.select :year, options_for_select(Date.current.year.downto(2010).to_a, vehicle.year),
+          { include_blank: "Seçiniz" }, class: "form-select", required: true %>
+  </div>
+
+  <div class="row">
+    <div class="col-6 mb-3">
+      <%= form.label :battery_capacity, "Batarya Kapasitesi", class: "form-label" %> <span class="text-danger">*</span>
+      <div class="input-group">
+        <%= form.number_field :battery_capacity, step: 0.01, required: true, class: "form-control",
+              data: { vehicle_form_target: "battery" } %>
+        <span class="input-group-text">kWh</span>
+      </div>
+    </div>
+    <div class="col-6 mb-3">
+      <%= form.label :max_charge_power, "Maks. Şarj Gücü", class: "form-label" %> <span class="text-danger">*</span>
+      <div class="input-group">
+        <%= form.number_field :max_charge_power, step: 0.01, required: true, class: "form-control",
+              data: { vehicle_form_target: "power" } %>
+        <span class="input-group-text">kW</span>
+      </div>
+    </div>
+  </div>
+</div>

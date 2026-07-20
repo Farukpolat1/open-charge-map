@@ -1,0 +1,19 @@
+<h1>Şarjı Bitir</h1>
+<%= form_with model: [@vehicle, @charging_session] do |form| %>
+  <% if @charging_session.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% @charging_session.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :amount_paid, "Ödenen Ücret (TL)", class: "form-label" %>
+    <%= form.number_field :amount_paid, required: true, step: "any", class: "form-control" %>
+  </div>
+
+  <%= form.submit "Şarjı Bitir" , class: "btn btn-warning w-100 fw-semibold" %>
+<% end %>

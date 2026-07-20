@@ -1,32 +1,22 @@
-<main class="hero-section">
-  <div class="hero-container">
-    <h1>Türkiye'nin En Güncel Şarj İstasyonu Haritası ⚡️</h1>
-    <p>Yolculuğa ara vermeyin. Çevrenizdeki en yakın ve uygun şarj noktalarını anında bulun.</p>
+<div class="stations-hero">
+  <div class="container text-center">
+    <h1 class="mb-2">Türkiye'nin En Güncel Şarj İstasyonu Haritası ⚡️</h1>
+    <p class="mb-3">Yolculuğa ara vermeyin. Çevrenizdeki en yakın ve uygun şarj noktalarını anında bulun.</p>
+    <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+      <div class="view-toggle">
+        <span class="view-toggle-link active">🗺️ Harita</span>
+        <%= link_to "📋 Liste", stations_path, class: "view-toggle-link" %>
+      </div>
+      <span class="hero-live-count">
+        <span class="pulse-icon"></span>
+        Türkiye genelinde <strong><%= @stations_count %></strong> aktif istasyon güncel olarak listeleniyor!
+      </span>
+    </div>
   </div>
-  <div class="live-status">
-    <span class="pulse-icon"></span>
-    <span>Türkiye genelinde <strong><%= @stations_count %></strong> aktif istasyon güncel olarak listeleniyor!</span>
-  </div>
-</main>
+</div>
 
 <main class="search-section">
   <div class="container mt-4 mb-5" data-controller="map_toggle">
-    <div class="text-center mb-4">
-      <h1>Şarj İstasyonlarını Araştırın</h1>
-      <p class="text-muted">Yakınınızdaki istasyonları bulun.</p>
-    </div>
-
-
-    <!--   
-    
-    <%= form_with url: "/search", method: :get, local: true, class: "d-flex justify-content-center mb-4" do %>
-      <div class="input-group" style="max-width: 500px;">
-        <input type="text" name="location" value="<%= params[:location] %>" class="form-control" placeholder="Şehir adı girin (örn. İstanbul)">
-        <button type="submit" class="btn btn-primary">Ara</button>
-      </div>
-    <% end %>
-    -->
-  
     <div class="d-lg-none mb-3 text-center">
       <button class="btn btn-outline-primary me-2" data-action="click->map_toggle#showList">Liste</button>
       <button class="btn btn-outline-primary" data-action="click->map_toggle#showMap">Harita</button>
@@ -34,42 +24,61 @@
 
     <div class="map-filter-panel p-3 p-md-4">
     <div class="row align-items-stretch">
-      <div class="col-lg-5 mb-4" data-map_toggle-target="list">
+      <div class="col-lg-4 mb-4" data-map_toggle-target="list">
+        <div class="filter-sidebar">
             <%= form_with url: "/search", method: :get, local: true, data: { controller: "location-filter" } do %>
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h6 class="card-title">Mesafe Filtresi</h6>
-                  <p class="mb-2">Mesafe: <span id="distance-value"><%= params[:distance].presence || 10 %></span> km</p>
-                  <input type="range" name="distance" class="form-range" id="distance-slider" min="1" max="50" value="<%= params[:distance].presence || 10 %>" onchange="this.form.requestSubmit()">
+              <div class="accordion mb-3" id="filterAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filterDistance">
+                      📏 Mesafe Filtresi
+                    </button>
+                  </h2>
+                  <div id="filterDistance" class="accordion-collapse collapse show" data-bs-parent="#filterAccordion">
+                    <div class="accordion-body">
+                      <p class="mb-2">Mesafe: <span id="distance-value"><%= params[:distance].presence || 10 %></span> km</p>
+                      <input type="range" name="distance" class="form-range" id="distance-slider" min="1" max="50" value="<%= params[:distance].presence || 10 %>" onchange="this.form.requestSubmit()">
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h6 class="card-title">İl Filtresi</h6>
-
-                  <select name="il" class="form-select" data-location-filter-target="province" data-action="change->location-filter#updateDistricts">
-                    <option value="">İl seçin</option>
-                    <% @provinces.each do |il| %>
-                      <option value="<%= il %>" <%= "selected" if il == params[:il] %>><%= il %></option>
-                    <% end %>
-                  </select>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filterProvince">
+                      📍 İl Filtresi
+                    </button>
+                  </h2>
+                  <div id="filterProvince" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                    <div class="accordion-body">
+                      <select name="il" class="form-select" data-location-filter-target="province" data-action="change->location-filter#updateDistricts">
+                        <option value="">İl seçin</option>
+                        <% @provinces.each do |il| %>
+                          <option value="<%= il %>" <%= "selected" if il == params[:il] %>><%= il %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="card mb-3">
-                <div class="card-body">
-                  <h6 class="card-title">İlçe Filtresi</h6>
-
-                  <select name="ilce" class="form-select" data-location-filter-target="district" onchange="this.form.requestSubmit()">
-                    <% if params[:il].present? %>
-                      <% (TurkeyLocationService.districts_for(params[:il]) || []).each do |ilce| %>
-                        <option value="<%= ilce %>" <%= "selected" if ilce == params[:ilce] %>><%= ilce %></option>
-                      <% end %>
-                    <% else %>
-                      <option value="">Önce il seçin</option>
-                    <% end %>
-                  </select>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filterDistrict">
+                      🏘️ İlçe Filtresi
+                    </button>
+                  </h2>
+                  <div id="filterDistrict" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+                    <div class="accordion-body">
+                      <select name="ilce" class="form-select" data-location-filter-target="district" onchange="this.form.requestSubmit()">
+                        <% if params[:il].present? %>
+                          <% (TurkeyLocationService.districts_for(params[:il]) || []).each do |ilce| %>
+                            <option value="<%= ilce %>" <%= "selected" if ilce == params[:ilce] %>><%= ilce %></option>
+                          <% end %>
+                        <% else %>
+                          <option value="">Önce il seçin</option>
+                        <% end %>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -82,9 +91,10 @@
       <div id="no-stations-message" class="alert alert-warning d-none">
         Bu filtrede istasyon bulunamadı.
       </div>
+        </div>
       </div>
 
-      <div class="col-lg-7 mb-4 d-none d-lg-block" data-map_toggle-target="map">
+      <div class="col-lg-8 mb-4 d-none d-lg-block" data-map_toggle-target="map">
         <div class="d-flex justify-content-end mb-2">
           <span class="text-muted small">Haritada gösterilen: <strong id="visible-station-count">0</strong> istasyon</span>
         </div>
@@ -117,8 +127,9 @@
       var showStationDetail = initStationDetailPanel();
 
           var stations = <%= (@stations || []).to_json.html_safe %>;
-          var hasSearched = <%= (!@stations.nil?).to_json %>;
+          var hasLocationFilter = <%= (@location_filtered || false).to_json %>;
           window.turkeyDistricts = <%= TURKEY_PROVINCES_DATA.to_json.html_safe %>;
+          window.vehicleBrandsData = <%= VEHICLE_BRANDS_DATA.to_json.html_safe %>;
       var map = L.map("map");
       map.fitBounds([[35.8, 25.6], [42.1, 44.8]]);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
@@ -126,17 +137,20 @@
       var stationLayer = createStationLayer(map);
 
       function drawMarkers(maxDistance) {
-        // Mesafeye uyan istasyonları filtrele
+        // Bir il/ilçe filtresi uygulanmamışsa tüm istasyonları göster;
+        // uygulanmışsa sadece seçilen mesafeye uyanları göster
         var filtered = stations.filter(function(station) {
-          return station.AddressInfo.Distance <= maxDistance;
+          if (!hasLocationFilter) return true;
+          var distance = station.AddressInfo.Distance;
+          return distance == null || distance <= maxDistance;
         });
 
         stationLayer.render(filtered, showStationDetail, "visible-station-count");
 
-        // Sadece bir arama/filtre yapılmışsa ve sonuç boşsa uyarı mesajını göster
+        // Sadece bir il/ilçe filtresi uygulanmışsa ve sonuç boşsa uyarı mesajını göster
         var noStationsMessage = document.getElementById("no-stations-message");
         if (noStationsMessage) {
-          noStationsMessage.classList.toggle("d-none", !hasSearched || filtered.length > 0);
+          noStationsMessage.classList.toggle("d-none", !hasLocationFilter || filtered.length > 0);
         }
       }
 
