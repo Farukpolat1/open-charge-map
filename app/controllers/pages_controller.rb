@@ -31,7 +31,7 @@ class PagesController < ApplicationController
         email: params[:email],
         subject: params[:subject],
         message: params[:message]
-      ).deliver_later
+      ).deliver_now
 
       redirect_to contact_path, notice: "Mesajınız için teşekkürler, en kısa sürede size dönüş yapacağız."
     end
