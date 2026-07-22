@@ -10,13 +10,13 @@ class VehiclesController < ApplicationController
   def destroy
     @vehicle = current_user.vehicles.find(params[:id])
     @vehicle.destroy
-    redirect_to vehicles_path, notice: "Araç silindi"
+    redirect_to profile_path, notice: "Araç silindi"
   end
 
   def create
     @vehicle = current_user.vehicles.build(vehicle_params)
     if @vehicle.save
-      redirect_to vehicles_path, notice: "Araç Oluştur"
+      redirect_to profile_path, notice: "Araç Oluştur"
     else
       render :new, status: :unprocessable_entity
     end

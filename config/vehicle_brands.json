@@ -6,33 +6,33 @@
       "modeller": [
         {
           "isim": "Model S",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 250
         },
         {
           "isim": "Model 3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 75,
+          "sarj_gucu_kw": 250
         },
         {
           "isim": "Model X",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 250
         },
         {
           "isim": "Model Y",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 75,
+          "sarj_gucu_kw": 250
         },
         {
           "isim": "Cybertruck",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 123,
+          "sarj_gucu_kw": 250
         },
         {
           "isim": "Roadster",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 200,
+          "sarj_gucu_kw": 250
         }
       ]
     },
@@ -42,13 +42,13 @@
       "modeller": [
         {
           "isim": "T10X",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 88.5,
+          "sarj_gucu_kw": 180
         },
         {
           "isim": "T10F",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 88.5,
+          "sarj_gucu_kw": 180
         }
       ]
     },
@@ -63,28 +63,28 @@
         },
         {
           "isim": "Dolphin",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 60.48,
+          "sarj_gucu_kw": 88
         },
         {
           "isim": "Seal",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 82.5,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "Han",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 85.4,
+          "sarj_gucu_kw": 120
         },
         {
           "isim": "Tang",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 108.8,
+          "sarj_gucu_kw": 170
         },
         {
           "isim": "Yuan Plus",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 60.48,
+          "sarj_gucu_kw": 88
         }
       ]
     },
@@ -94,28 +94,28 @@
       "modeller": [
         {
           "isim": "Polestar 2",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 82,
+          "sarj_gucu_kw": 205
         },
         {
           "isim": "Polestar 3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 111,
+          "sarj_gucu_kw": 250
         },
         {
           "isim": "Polestar 4",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "Polestar 5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 102,
+          "sarj_gucu_kw": 350
         },
         {
           "isim": "Polestar 6",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 88,
+          "sarj_gucu_kw": 350
         }
       ]
     },
@@ -125,23 +125,23 @@
       "modeller": [
         {
           "isim": "R1T",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 135,
+          "sarj_gucu_kw": 220
         },
         {
           "isim": "R1S",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 135,
+          "sarj_gucu_kw": 220
         },
         {
           "isim": "R2",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 85,
+          "sarj_gucu_kw": 220
         },
         {
           "isim": "R3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 85,
+          "sarj_gucu_kw": 220
         }
       ]
     },
@@ -151,13 +151,13 @@
       "modeller": [
         {
           "isim": "Air",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 118,
+          "sarj_gucu_kw": 300
         },
         {
           "isim": "Gravity",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 120,
+          "sarj_gucu_kw": 300
         }
       ]
     },
@@ -167,23 +167,23 @@
       "modeller": [
         {
           "isim": "Taycan",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 105,
+          "sarj_gucu_kw": 320
         },
         {
           "isim": "Taycan Cross Turismo",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 105,
+          "sarj_gucu_kw": 320
         },
         {
           "isim": "Macan Electric",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 270
         },
         {
           "isim": "718 EV (Konsept)",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 82,
+          "sarj_gucu_kw": 270
         }
       ]
     },
@@ -193,18 +193,18 @@
       "modeller": [
         {
           "isim": "Ioniq 5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 84,
+          "sarj_gucu_kw": 240
         },
         {
           "isim": "Ioniq 6",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77.4,
+          "sarj_gucu_kw": 240
         },
         {
           "isim": "Kona Electric",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 64.8,
+          "sarj_gucu_kw": 100
         }
       ]
     },
@@ -214,28 +214,28 @@
       "modeller": [
         {
           "isim": "EV3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 81.4,
+          "sarj_gucu_kw": 128
         },
         {
           "isim": "EV6",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 84,
+          "sarj_gucu_kw": 240
         },
         {
           "isim": "EV9",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 99.8,
+          "sarj_gucu_kw": 210
         },
         {
           "isim": "Niro EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 64.8,
+          "sarj_gucu_kw": 80
         },
         {
           "isim": "Soul EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 64,
+          "sarj_gucu_kw": 100
         }
       ]
     },
@@ -245,33 +245,33 @@
       "modeller": [
         {
           "isim": "ES8",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 180
         },
         {
           "isim": "ES6",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 125
         },
         {
           "isim": "EC6",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 125
         },
         {
           "isim": "ET7",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 180
         },
         {
           "isim": "ET5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 125
         },
         {
           "isim": "EL7",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 125
         }
       ]
     },
@@ -281,38 +281,38 @@
       "modeller": [
         {
           "isim": "ID.3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 170
         },
         {
           "isim": "ID.4",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 175
         },
         {
           "isim": "ID.5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 175
         },
         {
           "isim": "ID.7",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 86,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "ID. Buzz",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 79,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "e-Golf",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 35.8,
+          "sarj_gucu_kw": 40
         },
         {
           "isim": "e-up!",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 32.3,
+          "sarj_gucu_kw": 40
         }
       ]
     },
@@ -322,43 +322,43 @@
       "modeller": [
         {
           "isim": "i3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 42.2,
+          "sarj_gucu_kw": 50
         },
         {
           "isim": "i4",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 83.9,
+          "sarj_gucu_kw": 205
         },
         {
           "isim": "i5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 81.2,
+          "sarj_gucu_kw": 205
         },
         {
           "isim": "i7",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 101.7,
+          "sarj_gucu_kw": 195
         },
         {
           "isim": "iX",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 111.5,
+          "sarj_gucu_kw": 195
         },
         {
           "isim": "iX1",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 64.7,
+          "sarj_gucu_kw": 130
         },
         {
           "isim": "iX2",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 64.7,
+          "sarj_gucu_kw": 130
         },
         {
           "isim": "iX3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 80,
+          "sarj_gucu_kw": 150
         }
       ]
     },
@@ -368,48 +368,48 @@
       "modeller": [
         {
           "isim": "EQA",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66.5,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "EQB",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66.5,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "EQC",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 80,
+          "sarj_gucu_kw": 110
         },
         {
           "isim": "EQE",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 90.6,
+          "sarj_gucu_kw": 170
         },
         {
           "isim": "EQE SUV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 90.6,
+          "sarj_gucu_kw": 170
         },
         {
           "isim": "EQS",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 107.8,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "EQS SUV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 107.8,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "EQT",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 45,
+          "sarj_gucu_kw": 80
         },
         {
           "isim": "EQV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 90,
+          "sarj_gucu_kw": 110
         }
       ]
     },
@@ -419,28 +419,28 @@
       "modeller": [
         {
           "isim": "Q4 e-tron",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 175
         },
         {
           "isim": "Q8 e-tron",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 106,
+          "sarj_gucu_kw": 170
         },
         {
           "isim": "e-tron GT",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 105,
+          "sarj_gucu_kw": 320
         },
         {
           "isim": "A6 e-tron",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 270
         },
         {
           "isim": "Q6 e-tron",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 270
         }
       ]
     },
@@ -450,23 +450,23 @@
       "modeller": [
         {
           "isim": "Mustang Mach-E",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 91,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "F-150 Lightning",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 131,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "E-Transit",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 68,
+          "sarj_gucu_kw": 115
         },
         {
           "isim": "Explorer EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 79,
+          "sarj_gucu_kw": 185
         }
       ]
     },
@@ -476,28 +476,28 @@
       "modeller": [
         {
           "isim": "Bolt EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 65,
+          "sarj_gucu_kw": 55
         },
         {
           "isim": "Bolt EUV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 65,
+          "sarj_gucu_kw": 55
         },
         {
           "isim": "Silverado EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 200,
+          "sarj_gucu_kw": 350
         },
         {
           "isim": "Blazer EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 85,
+          "sarj_gucu_kw": 190
         },
         {
           "isim": "Equinox EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 85,
+          "sarj_gucu_kw": 150
         }
       ]
     },
@@ -507,18 +507,18 @@
       "modeller": [
         {
           "isim": "Leaf",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 60,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "Ariya",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 87,
+          "sarj_gucu_kw": 130
         },
         {
           "isim": "Sakura",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 20,
+          "sarj_gucu_kw": 30
         }
       ]
     },
@@ -528,13 +528,13 @@
       "modeller": [
         {
           "isim": "bZ4X",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 71.4,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "bZ3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 65.3,
+          "sarj_gucu_kw": 90
         }
       ]
     },
@@ -544,18 +544,18 @@
       "modeller": [
         {
           "isim": "Honda e",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 35.5,
+          "sarj_gucu_kw": 50
         },
         {
           "isim": "Prologue",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 85,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "e:Ny1",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 68.8,
+          "sarj_gucu_kw": 78
         }
       ]
     },
@@ -565,23 +565,23 @@
       "modeller": [
         {
           "isim": "EX30",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 69,
+          "sarj_gucu_kw": 153
         },
         {
           "isim": "XC40 Recharge",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 82,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "C40 Recharge",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 82,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "EX90",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 111,
+          "sarj_gucu_kw": 250
         }
       ]
     },
@@ -591,33 +591,33 @@
       "modeller": [
         {
           "isim": "Zoe",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 52,
+          "sarj_gucu_kw": 50
         },
         {
           "isim": "Megane E-Tech",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 60,
+          "sarj_gucu_kw": 130
         },
         {
           "isim": "Scenic E-Tech",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 87,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "Twingo E-Tech",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 22,
+          "sarj_gucu_kw": 22
         },
         {
           "isim": "Renault 5 E-Tech",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 52,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "Kangoo E-Tech",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 45,
+          "sarj_gucu_kw": 80
         }
       ]
     },
@@ -627,33 +627,33 @@
       "modeller": [
         {
           "isim": "e-208",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 51,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "e-2008",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "e-308",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "e-3008",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 73,
+          "sarj_gucu_kw": 160
         },
         {
           "isim": "e-Rifter",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 50,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "e-Traveller",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 75,
+          "sarj_gucu_kw": 100
         }
       ]
     },
@@ -663,18 +663,18 @@
       "modeller": [
         {
           "isim": "500e",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 42,
+          "sarj_gucu_kw": 85
         },
         {
           "isim": "600e",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "E-Ulysse",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 75,
+          "sarj_gucu_kw": 100
         }
       ]
     },
@@ -684,28 +684,28 @@
       "modeller": [
         {
           "isim": "MG4",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 144
         },
         {
           "isim": "ZS EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 72.6,
+          "sarj_gucu_kw": 92
         },
         {
           "isim": "Marvel R",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 70,
+          "sarj_gucu_kw": 92
         },
         {
           "isim": "MG5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 61.1,
+          "sarj_gucu_kw": 87
         },
         {
           "isim": "Cyberster",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 144
         }
       ]
     },
@@ -715,28 +715,28 @@
       "modeller": [
         {
           "isim": "P7",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 86.2,
+          "sarj_gucu_kw": 175
         },
         {
           "isim": "G9",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 98,
+          "sarj_gucu_kw": 300
         },
         {
           "isim": "G3i",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66,
+          "sarj_gucu_kw": 80
         },
         {
           "isim": "P5",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66,
+          "sarj_gucu_kw": 70
         },
         {
           "isim": "X9",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 101.5,
+          "sarj_gucu_kw": 330
         }
       ]
     },
@@ -746,18 +746,18 @@
       "modeller": [
         {
           "isim": "Ocean",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 113,
+          "sarj_gucu_kw": 170
         },
         {
           "isim": "Pear",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 75,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "Ronin",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 150,
+          "sarj_gucu_kw": 350
         }
       ]
     },
@@ -767,18 +767,18 @@
       "modeller": [
         {
           "isim": "Enyaq iV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 175
         },
         {
           "isim": "Enyaq Coupé iV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 175
         },
         {
           "isim": "Elroq",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 77,
+          "sarj_gucu_kw": 175
         }
       ]
     },
@@ -788,18 +788,18 @@
       "modeller": [
         {
           "isim": "Cooper SE",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54.2,
+          "sarj_gucu_kw": 95
         },
         {
           "isim": "Countryman SE",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66.4,
+          "sarj_gucu_kw": 130
         },
         {
           "isim": "Aceman",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54.2,
+          "sarj_gucu_kw": 95
         }
       ]
     },
@@ -809,8 +809,8 @@
       "modeller": [
         {
           "isim": "I-Pace",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 90,
+          "sarj_gucu_kw": 104
         }
       ]
     },
@@ -820,13 +820,13 @@
       "modeller": [
         {
           "isim": "RZ 450e",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 71.4,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "UX 300e",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 72.8,
+          "sarj_gucu_kw": 50
         }
       ]
     },
@@ -836,13 +836,13 @@
       "modeller": [
         {
           "isim": "Grecale Folgore",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 105,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "GranTurismo Folgore",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 92.5,
+          "sarj_gucu_kw": 270
         }
       ]
     },
@@ -852,18 +852,18 @@
       "modeller": [
         {
           "isim": "Evija",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 93,
+          "sarj_gucu_kw": 350
         },
         {
           "isim": "Eletre",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 112,
+          "sarj_gucu_kw": 350
         },
         {
           "isim": "Emeya",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 102,
+          "sarj_gucu_kw": 350
         }
       ]
     },
@@ -873,23 +873,23 @@
       "modeller": [
         {
           "isim": "Corsa Electric",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 51,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "Mokka Electric",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "Astra Electric",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "Combo-e",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 50,
+          "sarj_gucu_kw": 100
         }
       ]
     },
@@ -899,18 +899,18 @@
       "modeller": [
         {
           "isim": "Smart #1",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "Smart #3",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66,
+          "sarj_gucu_kw": 150
         },
         {
           "isim": "EQ fortwo",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 17.6,
+          "sarj_gucu_kw": 22
         }
       ]
     },
@@ -920,18 +920,18 @@
       "modeller": [
         {
           "isim": "Avenger",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "Recon",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 220
         },
         {
           "isim": "Wagoneer S",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 220
         }
       ]
     },
@@ -941,18 +941,18 @@
       "modeller": [
         {
           "isim": "001",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 100,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "009",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 140,
+          "sarj_gucu_kw": 270
         },
         {
           "isim": "X",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 66,
+          "sarj_gucu_kw": 150
         }
       ]
     },
@@ -962,18 +962,18 @@
       "modeller": [
         {
           "isim": "Lyriq",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 102,
+          "sarj_gucu_kw": 190
         },
         {
           "isim": "Celestiq",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 111,
+          "sarj_gucu_kw": 200
         },
         {
           "isim": "Escalade IQ",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 200,
+          "sarj_gucu_kw": 350
         }
       ]
     },
@@ -983,18 +983,18 @@
       "modeller": [
         {
           "isim": "Hummer EV Pickup",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 212,
+          "sarj_gucu_kw": 350
         },
         {
           "isim": "Hummer EV SUV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 170,
+          "sarj_gucu_kw": 300
         },
         {
           "isim": "Sierra EV",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 200,
+          "sarj_gucu_kw": 350
         }
       ]
     },
@@ -1004,8 +1004,8 @@
       "modeller": [
         {
           "isim": "Spring",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 26.8,
+          "sarj_gucu_kw": 30
         }
       ]
     },
@@ -1015,28 +1015,28 @@
       "modeller": [
         {
           "isim": "Ami",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 5.5,
+          "sarj_gucu_kw": 3.6
         },
         {
           "isim": "ë-C4",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "ë-C4 X",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 54,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "ë-Berlingo",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 50,
+          "sarj_gucu_kw": 100
         },
         {
           "isim": "ë-SpaceTourer",
-          "batarya_kwh": null,
-          "sarj_gucu_kw": null
+          "batarya_kwh": 75,
+          "sarj_gucu_kw": 100
         }
       ]
     }

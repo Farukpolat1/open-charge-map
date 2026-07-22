@@ -90,6 +90,12 @@ body {
   background-color: #ffffff;
   margin: 0px;
   padding: 0px;
+  /* İçerik kısa olan sayfalarda bile footer'ın ekranın en altına yapışması için
+     ("sticky footer" düzeni): body dikey bir flex kutusu, ana içerik büyüyüp
+     kalan boşluğu doldurur, footer doğal olarak en alta itilir. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .hero-section {
   display: flex;             /* İçindeki elemanları esnek bir kutu modeline alır */
@@ -252,6 +258,37 @@ body {
   font-weight: 700;
   color: var(--primary);
   line-height: 1.2;
+}
+
+/* Şarj geçmişi sayfasındaki özet istatistik kutuları */
+.charging-stat-tile {
+  background-color: var(--tint);
+  border-radius: 12px;
+  padding: 16px 20px;
+  height: 100%;
+}
+.charging-stat-tile-accent {
+  background-color: var(--tint-accent);
+}
+.charging-stat-tile .stat-tile-value {
+  font-size: 1.6rem;
+}
+
+/* Şarj geçmişi tablosuna /stations sayfasındakine benzer bir görsel dil kazandırır */
+.charging-history-table thead th {
+  background-color: #f8fafc;
+  border-bottom: 2px solid var(--primary);
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 12px 16px;
+}
+.charging-history-table tbody td {
+  padding: 12px 16px;
+}
+.charging-history-table tbody tr:hover {
+  background-color: var(--tint);
 }
 
 /* Hakkımızda sayfasındaki Vizyon/Misyon/Hakkımızda kartlarına renkli üst çizgi ve ikon rozeti */

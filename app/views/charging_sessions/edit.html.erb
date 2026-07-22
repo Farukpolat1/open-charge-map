@@ -1,19 +1,32 @@
-<h1>Şarjı Bitir</h1>
-<%= form_with model: [@vehicle, @charging_session] do |form| %>
-  <% if @charging_session.errors.any? %>
-    <div class="alert alert-danger">
-      <ul class="mb-0">
-        <% @charging_session.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<div class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <%= link_to "← Araçlarım'a Dön", profile_path, class: "btn btn-outline-secondary btn-sm mb-3" %>
+
+          <h1 class="h4 mb-4">Şarjı Bitir</h1>
+
+          <%= form_with model: [@vehicle, @charging_session] do |form| %>
+            <% if @charging_session.errors.any? %>
+              <div class="alert alert-danger">
+                <ul class="mb-0">
+                  <% @charging_session.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="mb-3">
+              <%= form.label :amount_paid, "Ödenen Ücret (TL)", class: "form-label" %>
+              <%= form.number_field :amount_paid, required: true, step: "any", class: "form-control" %>
+            </div>
+
+            <%= form.submit "Şarjı Bitir", class: "btn btn-warning w-100 fw-semibold" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="mb-3">
-    <%= form.label :amount_paid, "Ödenen Ücret (TL)", class: "form-label" %>
-    <%= form.number_field :amount_paid, required: true, step: "any", class: "form-control" %>
   </div>
-
-  <%= form.submit "Şarjı Bitir" , class: "btn btn-warning w-100 fw-semibold" %>
-<% end %>
+</div>

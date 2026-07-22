@@ -75,7 +75,7 @@
               <tbody>
                 <% (@stations || []).each do |station| %>
                   <% info = station["AddressInfo"] || {} %>
-                  <tr data-province="<%= info["StateOrProvince"].to_s.downcase %>" data-district="<%= info["Town"].to_s.downcase %>" data-title="<%= info["Title"].to_s.downcase %>">
+                  <tr data-province="<%= TurkeyLocationService.normalize(info["StateOrProvince"]) %>" data-district="<%= TurkeyLocationService.normalize(info["Town"]) %>" data-title="<%= info["Title"].to_s.downcase %>">
                     <td class="fw-semibold text-primary"><%= info["StateOrProvince"] %></td>
                     <td><%= info["Town"] %></td>
                     <td>

@@ -4,9 +4,8 @@ class StationsController < ApplicationController
   allow_unauthenticated_access only: %i[index show map search]
 
   def index
-    @stations = @service.all_stations
+    @stations = OcmStation.all_as_json
     @stations += Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
-    TurkeyLocationService.normalize_addresses!(@stations)
     attach_latest_status(@stations)
     attach_rating_counts(@stations)
   end
@@ -64,14 +63,13 @@ class StationsController < ApplicationController
 
   def map
   if params[:lat].present? && params[:lng].present?
-    @stations = @service.stations_nearby(params[:lat], params[:lng])
+    @stations = OcmStation.near(params[:lat], params[:lng])
     local = Station.all.map { |s| s.as_ocm_json(distance: Station.haversine_km(params[:lat].to_f, params[:lng].to_f, s.latitude, s.longitude), current_user: current_user) }
   else
-    @stations = @service.all_stations
+    @stations = OcmStation.all_as_json
     local = Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
   end
   @stations += local
-  TurkeyLocationService.normalize_addresses!(@stations)
   attach_latest_status(@stations)
   attach_rating_counts(@stations)
   @provinces = TurkeyLocationService.provinces
@@ -86,17 +84,16 @@ class StationsController < ApplicationController
   if location.present?
     coordinates = GeocodingService.new.geocode(location)
     if coordinates
-      @stations = @service.stations_nearby(coordinates[:latitude], coordinates[:longitude], params[:distance])
+      @stations = OcmStation.near(coordinates[:latitude], coordinates[:longitude], params[:distance])
       local = Station.all.map { |s| s.as_ocm_json(distance: Station.haversine_km(coordinates[:latitude].to_f, coordinates[:longitude].to_f, s.latitude, s.longitude), current_user: current_user) }
       @stations += local
     else
       @stations = []
     end
   else
-    @stations = @service.all_stations
+    @stations = OcmStation.all_as_json
     @stations += Station.all.map { |s| s.as_ocm_json(current_user: current_user) }
   end
-  TurkeyLocationService.normalize_addresses!(@stations)
   attach_latest_status(@stations)
   attach_rating_counts(@stations)
   @provinces = TurkeyLocationService.provinces

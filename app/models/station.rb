@@ -15,8 +15,8 @@ class Station < ApplicationRecord
       "AddressLine1" => address_line,
       "Town" => town,
       "StateOrProvince" => province,
-      "Latitude" => latitude,
-      "Longitude" => longitude
+      "Latitude" => latitude&.to_f,
+      "Longitude" => longitude&.to_f
     },
     "Connections" => [
       {

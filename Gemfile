@@ -63,3 +63,6 @@ group :test do
   gem "selenium-webdriver"
 end
 gem "httparty"
+gem "lograge"
+
+gem "solid_queue", "~> 1.4"

@@ -1,24 +1,63 @@
-<h1>Şarja Başla</h1>
-<%= form_with model: [@vehicle, @charging_session] do |form| %>
-  <% if @charging_session.errors.any? %>
-    <div class="alert alert-danger">
-      <ul class="mb-0">
-        <% @charging_session.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<div class="container mt-4 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <%= link_to "← Araçlarım'a Dön", profile_path, class: "btn btn-outline-secondary btn-sm mb-3" %>
+
+          <h1 class="h4 mb-4">Şarja Başla</h1>
+
+          <% if @charging_session.errors.any? %>
+            <div class="alert alert-danger">
+              <ul class="mb-0">
+                <% @charging_session.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="card mb-3" data-controller="station-picker">
+            <div class="card-body">
+              <h6 class="card-title mb-3">🔎 İstasyon Bul</h6>
+              <div class="row g-2 mb-2">
+                <div class="col-md-4">
+                  <select class="form-select form-select-sm" data-station-picker-target="ilSelect">
+                    <option value="">Tüm İller</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <select class="form-select form-select-sm" data-station-picker-target="ilceSelect">
+                    <option value="">Tüm İlçeler</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <input type="search" class="form-control form-control-sm" placeholder="İstasyon ara..." data-station-picker-target="search">
+                </div>
+              </div>
+              <ul class="list-group" style="max-height: 250px; overflow-y: auto;" data-station-picker-target="results"></ul>
+            </div>
+          </div>
+
+          <%= form_with model: [@vehicle, @charging_session] do |form| %>
+            <div class="mb-3">
+              <%= form.label :station_name, "İstasyon Adı", class: "form-label" %>
+              <%= form.text_field :station_name, required: true, autofocus: true, class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :power_kw, "Güç (kW)", class: "form-label" %>
+              <%= form.number_field :power_kw, required: true, step: "any", class: "form-control" %>
+            </div>
+
+            <%= form.submit "Şarja Başla", class: "btn btn-warning w-100 fw-semibold" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="mb-3">
-    <%= form.label :station_name, "İstasyon Adı", class: "form-label" %>
-    <%= form.text_field :station_name, required: true, autofocus: true, class: "form-control" %>
   </div>
+</div>
 
-  <div class="mb-3">
-    <%= form.label :power_kw, "Güç (kW)", class: "form-label" %>
-    <%= form.number_field :power_kw, required: true, step: "any", class: "form-control" %>
-  </div>
-
-  <%= form.submit "Oturum Aç", class: "btn btn-warning w-100 fw-semibold" %>
-<% end %>
+<script>
+  window.chargingStations = <%= (@stations || []).to_json.html_safe %>;
+</script>

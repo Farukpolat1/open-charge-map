@@ -35,12 +35,17 @@ class TurkeyLocationService
     ilceler.find { |ilce| normalized.include?(normalize(ilce)) }
   end
 
-  # Karşılaştırma için normalize eder. OCM verisinde bazı kayıtlar düzgün "İ" harfini,
-  # bazıları ise ASCII "I" harfini kullanıyor ("İstanbul" vs "Istanbul") - Türkçe küçük
-  # harfe çevirme kuralında bu ikisi farklı sonuç verdiği için önce tüm I/İ/ı/i
-  # varyasyonlarını tek bir forma indirgeyip öyle karşılaştırıyoruz.
+  # Karşılaştırma için normalize eder. OCM verisinde bazı kayıtlar Türkçe karakterleri
+  # düzgün kullanıyor ("İstanbul", "Kütahya"), bazıları Türkçe klavyesi olmayan biri
+  # tarafından ASCII karşılıklarıyla girilmiş ("Istanbul", "Kutahya") - ikisinin de
+  # AYNI yer olarak eşleşmesi için tüm Türkçe özel harfleri ASCII karşılıklarına
+  # indirgeyip öyle karşılaştırıyoruz.
+  TURKISH_CHAR_MAP = { "İ" => "i", "I" => "i", "ı" => "i", "Ü" => "u", "ü" => "u",
+                        "Ö" => "o", "ö" => "o", "Ç" => "c", "ç" => "c",
+                        "Ş" => "s", "ş" => "s", "Ğ" => "g", "ğ" => "g" }.freeze
+
   def self.normalize(text)
-    text.to_s.strip.gsub(/[İIı]/, "i").downcase
+    text.to_s.strip.gsub(/[İIıÜüÖöÇçŞşĞğ]/) { |ch| TURKISH_CHAR_MAP[ch] }.downcase
   end
 
   # OCM verisinde StateOrProvince alanı çoğu zaman boş veya tutarsız yazılmış oluyor,

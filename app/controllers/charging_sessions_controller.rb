@@ -2,10 +2,13 @@ class ChargingSessionsController < ApplicationController
   def index
     @vehicle = current_user.vehicles.find(params[:vehicle_id])
     @charging_sessions = @vehicle.charging_sessions.order(started_at: :desc)
+    @total_kwh = @charging_sessions.sum(:kwh_used)
+    @total_paid = @charging_sessions.sum(:amount_paid)
   end
   def new
-  @vehicle = current_user.vehicles.find(params[:vehicle_id])
-  @charging_session = @vehicle.charging_sessions.build
+    @vehicle = current_user.vehicles.find(params[:vehicle_id])
+    @charging_session = @vehicle.charging_sessions.build
+    @stations = OcmStation.all_as_json
   end
 
   def create
@@ -45,7 +48,7 @@ class ChargingSessionsController < ApplicationController
 
   private
   def charging_session_params
-  params.expect(charging_session: [ :station_name, :power_kw ])
+    params.expect(charging_session: [ :station_name, :power_kw ])
   end
 
   def charging_session_update_params
